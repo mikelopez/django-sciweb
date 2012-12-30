@@ -29,18 +29,19 @@ class TestModelWebsite(TestCase):
         d['Website'].append({'name': 'domain', 'type': 'str'})
         d['Website'].append({'name': 'meta_key', 'type': 'str'})
         d['Website'].append({'name': 'meta_desc', 'type': 'str'})
+        d['Website'].append({'name': 'get_index_page', 'type':'method'})
 
         self.default_website = {'domain': 'http://www.domain.com', 'meta_key': 'keywords, keywords', \
             'meta_desc': 'meta description text goes here! '}
 
 
         # WebsitePage Attributes
-        d['WebsitePage'].append({'name': 'website', 'type': Website})
+        d['WebsitePage'].append({'name': 'website_id', 'type': Website})
         d['WebsitePage'].append({'name': 'name', 'type': 'str'})
         d['WebsitePage'].append({'name': 'title', 'type': 'str'})
         d['WebsitePage'].append({'name': 'type', 'type': 'str'})
         d['WebsitePage'].append({'name': 'redirects_to', 'type': 'str'})
-        website_page_types = ['index', 'sub', 'landing']
+        
 
         self.table_struct = d
         print '\n\ntable struct after: %s' % self.table_struct
@@ -60,9 +61,13 @@ class TestModelWebsite(TestCase):
             for cols in self.table_struct.get(tbl.__name__):
                 # check models have all these attributes
                 print 'col = %s' % cols.get('name')
-                assert_true(hasattr(tbl, cols.get('name')))
+                assert_true(hasattr(tbl(), cols.get('name')))
 
-        # dynamically assign data according to type, and test creation
+        website_page_types = ['index', 'sub', 'landing', 'static']
+        for i in website_page_types:
+            assert_true(
+                [[y == i for y in x[0] ] for x in WebsitePage.PAGETYPES]
+            )
         
     def create_model_website(self):
         """
@@ -93,7 +98,7 @@ class TestModelWebsite(TestCase):
             'type': '', 'redirects_to': ''}
         website_page_default = WebsitePage(**website_page_data).save()
         assert_equals(website_page_default.type, 'sub')
-        
+
 
 
 

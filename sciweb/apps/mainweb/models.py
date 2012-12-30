@@ -3,8 +3,57 @@ from django.db import models
 blankfield = {'blank': True, 'null': True}
 
 class Website(models.Model):
-    pass
+    """
+    For a website to render, it must be added here 
+    """
+    domain = models.CharField(max_length=40)
+    meta_desc = models.TextField(**blankfield)
+    meta_key = models.TextField(**blankfield)
+    notes = models.TextField(**blankfield)
+
+    def get_index_page(self):
+        """ get the index page """
+        try:
+            return self.website_set.select_related().filter(name='index')[0]
+        except:
+            return None
+
+    def save(self):
+        self.domain = self.domain.replace('http://', '').replace('/','').replace('.', '')
+        super(Website, self).save(*args, **kwargs)
+
 
 class WebsitePage(models.Model):
-    pass
-    
+    """ 
+    Represents a webpage on a particular website
+    setting index to be default 
+    Page Types:
+      Index: defines the main index page of the site
+      Sub: Defines a custom subpage at the top level or url (sitename.com/subpage) - 
+          this has to be a name that is not defined in as a "static" url
+      Static: This is a page name that will be used in a static page or landing page configuration
+        (TODO = implement staticpage table and add foreignkey HERE for it)
+        for a static url, the name of the page will be used in the second level of the url
+        example: sitename.com/staticpage_name/name-value
+    """
+    PAGETYPES = (('sub', 'sub',), ('landing','landing',),('index', 'index',),('static', 'static',),)
+    custom_blankfield = blankfield
+    custom_blankfield['max_length']= 30
+
+    website = models.ForeignKey('Website')
+    title = models.CharField(max_length=30, default='')
+    name = models.CharField(max_length=20, default='index')
+    type = models.CharField(max_length=15, choices=PAGETYPES)
+    redirects_to = models.CharField(**custom_blankfield)
+
+    def save(self):
+        """ Parse the name and save """
+        self.name = self.name.lower().replace(' ', '_').replace('.','').replace('/','')
+        # override index as type if name matches
+        if self.name == 'index':
+            self.type = 'index'
+        # override title if nothing is set
+        if not self.title:
+            self.title = self.name
+        super(WebsitePage, self).save(*args, **kwargs)
+
