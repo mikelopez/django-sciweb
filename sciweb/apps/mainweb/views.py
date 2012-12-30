@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect, HttpRequest, Http404, HttpResponse
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from django.core.urlresolvers import reverse, resolve
+from django.template import RequestContext, loader, Context
 
 import random
 import simplejson
@@ -39,6 +40,7 @@ def index(request):
         Index View
         Set the logger instance
     """
-    loggerlog = LoggerLog(log=LOG_ON, loggerlog=logging.getLogger(__name__))
-    return HttpResponse('Hello')
+    loggerlog = LoggerLog(log=LOG_ON, loggerlog=logging.getLogger("view_index"))
+    loggerlog.write('Test')
+    return render_to_response('index.html', {}, RequestContext(request))
 

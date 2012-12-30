@@ -7,6 +7,6 @@ Requirements:
 
 <b>Setup</b><br />
 place a symlink in sciweb/templates containing any HTML templates or you can create the directory as well.
-
+Create a directory called static/ and (optional) add to .gitignore
 
 
