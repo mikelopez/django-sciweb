@@ -1,3 +1,10 @@
 from django.db import models
 
-# Create your models here.
+blankfield = {'blank': True, 'null': True}
+
+class Website(models.Model):
+    pass
+
+class WebsitePage(models.Model):
+    pass
+    

@@ -35,12 +35,16 @@ def robots(request):
     """
     return HttpResponse('User-agent: *', mimetype="text/plain")
 
-def index(request):
+def index(request, linkname=None, filtername=None):
     """
         Index View
         Set the logger instance
+        -----
+        optional linkname: sitename.com/linkname - loads website page with name "linkname"
+        optional filtername: sitename.com/landing/12 - landing page ID 12
     """
     loggerlog = LoggerLog(log=LOG_ON, loggerlog=logging.getLogger("view_index"))
-    loggerlog.write('Test')
+    loggerlog.write('linkname:' % linkname)
+    loggerlog.write('filtername:' % filtername)
     return render_to_response('index.html', {}, RequestContext(request))
 
