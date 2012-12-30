@@ -6,11 +6,15 @@ Replace this with more appropriate tests for your application.
 """
 
 from django.test import TestCase
+from lib.mainlogger import LoggerLog
 
+class TestLogger(TestCase):
+    def test_log(self):
+        """
+        Tests our log class
+        """
+        c = LoggerLog()
+        d = LoggerLog(log=False, logger=False)
+        e = LoggerLog(log=True, logger=logging)
+        e.write('SOME TEST!')
 
-class SimpleTest(TestCase):
-    def test_basic_addition(self):
-        """
-        Tests that 1 + 1 always equals 2.
-        """
-        self.assertEqual(1 + 1, 2)
