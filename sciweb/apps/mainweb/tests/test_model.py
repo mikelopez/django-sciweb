@@ -1,7 +1,5 @@
 from django.test import TestCase
-
 from mainweb.models import Website, WebsitePage
-
 from nose.tools import assert_true, assert_equals, assert_false
 
 class TestModelWebsite(TestCase):
@@ -18,11 +16,8 @@ class TestModelWebsite(TestCase):
         """
         some stuff to do before
         """
-
         self.tables = [Website, WebsitePage]
-
         d = {}
-
         [d.__setitem__(i.__name__, []) for i in self.tables]
         print '\n\ntable struct: %s' % d
         # define the columsn and types 
@@ -34,25 +29,23 @@ class TestModelWebsite(TestCase):
         self.default_website = {'domain': 'http://www.domain.com', 'meta_key': 'keywords, keywords', \
             'meta_desc': 'meta description text goes here! '}
 
-
         # WebsitePage Attributes
         d['WebsitePage'].append({'name': 'website_id', 'type': Website})
         d['WebsitePage'].append({'name': 'name', 'type': 'str'})
         d['WebsitePage'].append({'name': 'title', 'type': 'str'})
         d['WebsitePage'].append({'name': 'type', 'type': 'str'})
         d['WebsitePage'].append({'name': 'redirects_to', 'type': 'str'})
-        
-
+    
         self.table_struct = d
         print '\n\ntable struct after: %s' % self.table_struct
-        
+
 
     def tearDown(self):
         pass
 
     def test_structure(self):
         """
-        Very Basic test: Tests our log class
+        test the model structures
         """
         # allow null tests
         for tbl in self.tables:
@@ -67,6 +60,11 @@ class TestModelWebsite(TestCase):
         for i in website_page_types:
             assert_true(
                 [[y == i for y in x[0] ] for x in WebsitePage.PAGETYPES]
+            )
+        static_page_urls = ['products', 'articles', 'a', 'p', 'search']
+        for i in website_page_types:
+            assert_true(
+                [[y == i for y in x[0] ] for x in WebsitePage.STATIC_PAGES]
             )
         
     def create_model_website(self):
@@ -98,6 +96,13 @@ class TestModelWebsite(TestCase):
             'type': '', 'redirects_to': ''}
         website_page_default = WebsitePage(**website_page_data).save()
         assert_equals(website_page_default.type, 'sub')
+
+        #website page should not save if it is any of the static urls - will try products - should NOT save
+        website_page_data = {'website': website, 'name': 'products', 'title': 'Products Page', \
+            'type': '', 'redirects_to': ''}
+        website_page_err = WebsitePage(**website_page_data)
+        assert_false(website_page_err.save())
+        print website_page_err
 
 
 

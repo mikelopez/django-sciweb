@@ -46,5 +46,7 @@ def index(request, linkname=None, filtername=None):
     loggerlog = LoggerLog(log=LOG_ON, loggerlog=logging.getLogger("view_index"))
     loggerlog.write('linkname:' % linkname)
     loggerlog.write('filtername:' % filtername)
-    return render_to_response('index.html', {}, RequestContext(request))
+
+    PageProcessor(request, linkname, filtername)
+    #return render_to_response('index.html', {}, RequestContext(request))
 

@@ -7,5 +7,4 @@ def parse_website(request, logger=False):
   domain_string = sitename.split(':')[0]
   if logger:
     logger(domain_string)
-
   return domain_string

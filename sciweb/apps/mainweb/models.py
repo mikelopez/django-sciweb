@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.exceptions import ValidationError
 
 blankfield = {'blank': True, 'null': True}
 
@@ -23,6 +24,7 @@ class Website(models.Model):
         super(Website, self).save(*args, **kwargs)
 
 
+
 class WebsitePage(models.Model):
     """ 
     Represents a webpage on a particular website
@@ -31,12 +33,11 @@ class WebsitePage(models.Model):
       Index: defines the main index page of the site
       Sub: Defines a custom subpage at the top level or url (sitename.com/subpage) - 
           this has to be a name that is not defined in as a "static" url
-      Static: This is a page name that will be used in a static page or landing page configuration
-        (TODO = implement staticpage table and add foreignkey HERE for it)
-        for a static url, the name of the page will be used in the second level of the url
-        example: sitename.com/staticpage_name/name-value
+      
     """
-    PAGETYPES = (('sub', 'sub',), ('landing','landing',),('index', 'index',),('static', 'static',),)
+    PAGETYPES = (('sub', 'sub',), ('landing','landing',), ('index', 'index',),('static', 'static',),)
+    STATIC_PAGES = ['products', 'p', 'articles', 'a', 'search']
+
     custom_blankfield = blankfield
     custom_blankfield['max_length']= 30
 
@@ -55,5 +56,8 @@ class WebsitePage(models.Model):
         # override title if nothing is set
         if not self.title:
             self.title = self.name
+        # do not allow page names of static URLS
+        if self.name in self.STATIC_PAGES:
+            raise ValidationError('Page name cannot be in static pages: %s' % str([x for x in self.STATIC_PAGES]))
         super(WebsitePage, self).save(*args, **kwargs)
 
