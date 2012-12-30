@@ -7,8 +7,17 @@ try:
 except ImportError:
     LOG_ON = False
 
+class PageProcessorException(Exception):
+    """ Handle basic exceptions for PageProcessor """
+    def __init__(self, message):
+        Exception.__init__(self, message)
+
+
 class PageProcessor(object):
-    """ URL format http://sitename.com/linkname/filtername """
+    """ 
+    Process the page - check for any static urls or website PageProcessor
+    URL-format http://sitename.com/linkname/filtername 
+    """
     linkname = None
     filtername = None
     logger = LoggerLog(log=LOG_ON, loggerlog=logging.getLogger('mainweb.process_page'))
@@ -17,6 +26,9 @@ class PageProcessor(object):
         self.linkname = linkname
         self.filtername = filtername
         self.request = request
+        if not request:
+            raise PageProcessorException('An error occured, no valid request')
+        self.process_page()
 
     def process_page(self, linkname, filtername):
         """ 

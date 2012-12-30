@@ -1,6 +1,7 @@
 from django.test import TestCase
 from mainweb.models import Website, WebsitePage
 from nose.tools import assert_true, assert_equals, assert_false
+from django.core.exceptions import ValidationError
 
 class TestModelWebsite(TestCase):
     """
@@ -101,7 +102,7 @@ class TestModelWebsite(TestCase):
         website_page_data = {'website': website, 'name': 'products', 'title': 'Products Page', \
             'type': '', 'redirects_to': ''}
         website_page_err = WebsitePage(**website_page_data)
-        assert_false(website_page_err.save())
+        self.assertRaises(ValidationError, website_page_err.save())
         print website_page_err
 
 
