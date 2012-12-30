@@ -9,20 +9,20 @@ from django.contrib.auth.views import login, logout
 
     # turn off admin !
 urlpatterns = patterns('',
-        (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root':'%s/static/' % (PROJECT_ROOTDIR)}),
-        (r'^src/(?P<path>.*)$', 'django.views.static.serve', {'document_root':'%s/apps/templates/web/src/' % (PROJECT_ROOTDIR)}),
-        (r'logout', logout),
-        (r'accounts/login/$', login),
-        (r'login/$', login),
+    (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root':'%s/static/' % (PROJECT_ROOTDIR)}),
+    (r'^src/(?P<path>.*)$', 'django.views.static.serve', {'document_root':'%s/apps/templates/web/src/' % (PROJECT_ROOTDIR)}),
+    (r'logout', logout),
+    (r'accounts/login/$', login),
+    (r'login/$', login),
 )
 
 
 try:
-  from settings import mastersite_rooturl as rooturl, \
-    application_url_includes as appurls
-  urlpatterns += rooturl
-  urlpatterns += appurls
+    from settings import mastersite_rooturl as rooturl, \
+        application_url_includes as appurls
+    urlpatterns += rooturl
+    urlpatterns += appurls
 
 except ImportError:
-  pass
+    pass
 
