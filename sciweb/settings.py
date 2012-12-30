@@ -8,6 +8,8 @@ ADMINS = (
 )
 
 PROJECT_ROOTDIR = os.path.realpath(os.path.dirname(__file__))
+PROJECT_PATH = os.path.realpath(os.path.dirname(__file__))
+
 MANAGERS = ADMINS
 
 DATABASES = {

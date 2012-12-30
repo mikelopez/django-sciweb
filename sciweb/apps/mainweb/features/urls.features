@@ -1,0 +1,5 @@
+Feature: Testing page urls
+
+Scenario: Test Document upload Page forms
+    Given I access the "index" page
+    

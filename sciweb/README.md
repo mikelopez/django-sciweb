@@ -1,6 +1,8 @@
 Requirements:
 - Django 1.4.1
-- South
+- South >= 0.7.6
+- Django-lettuce >= 0.1.27
+- nosetools
 
 
 <b>Setup</b><br />
