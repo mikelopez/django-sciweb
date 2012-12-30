@@ -11,5 +11,6 @@ class BaseAppsTestNoDb(DjangoTestSuiteRunner):
     pass
 
   def build_suite(self, test_labels, *args, **kwargs):
+    print 'shit...'
     return super(BaseAppsTestNoDb, self).build_suite(test_labels or \
         [i for i in settings.DEV_INSTALLED_APPS if not "django" in i], *args, **kwargs)

@@ -19,7 +19,7 @@ class Website(models.Model):
         except:
             return None
 
-    def save(self):
+    def save(self, *args, **kwargs):
         self.domain = self.domain.replace('http://', '').replace('/','').replace('.', '')
         super(Website, self).save(*args, **kwargs)
 
@@ -47,8 +47,11 @@ class WebsitePage(models.Model):
     type = models.CharField(max_length=15, choices=PAGETYPES)
     redirects_to = models.CharField(**custom_blankfield)
 
-    def save(self):
-        """ Parse the name and save """
+    def save(self, *args, **kwargs):
+        """ 
+        Parse the name and save 
+        raise validation error if name is in static-pages list
+        """
         self.name = self.name.lower().replace(' ', '_').replace('.','').replace('/','')
         # override index as type if name matches
         if self.name == 'index':

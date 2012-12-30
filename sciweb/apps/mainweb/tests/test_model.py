@@ -1,7 +1,9 @@
 from django.test import TestCase
-from mainweb.models import Website, WebsitePage
 from nose.tools import assert_true, assert_equals, assert_false
 from django.core.exceptions import ValidationError
+from mainweb.models import Website, WebsitePage
+
+
 
 class TestModelWebsite(TestCase):
     """
@@ -11,12 +13,12 @@ class TestModelWebsite(TestCase):
     table_struct = []
 
     default_website = None
-    default_websitepage = None
-
     def setUp(self):
         """
         some stuff to do before
         """
+        print "\nRunning Test mainweb.tests.test_model.TestModelWebsite\n\n"
+
         self.tables = [Website, WebsitePage]
         d = {}
         [d.__setitem__(i.__name__, []) for i in self.tables]
@@ -27,8 +29,7 @@ class TestModelWebsite(TestCase):
         d['Website'].append({'name': 'meta_desc', 'type': 'str'})
         d['Website'].append({'name': 'get_index_page', 'type':'method'})
 
-        self.default_website = {'domain': 'http://www.domain.com', 'meta_key': 'keywords, keywords', \
-            'meta_desc': 'meta description text goes here! '}
+        self.default_website = {'domain': 'domain.com', 'meta_key': 'keys', 'meta_desc': 'desc'}
 
         # WebsitePage Attributes
         d['WebsitePage'].append({'name': 'website_id', 'type': Website})
@@ -57,18 +58,29 @@ class TestModelWebsite(TestCase):
                 print 'col = %s' % cols.get('name')
                 assert_true(hasattr(tbl(), cols.get('name')))
 
+
+
+    def test_website_pagetypes(self):
+        """
+        Make sure we have all page typs 
+        """
         website_page_types = ['index', 'sub', 'landing', 'static']
         for i in website_page_types:
             assert_true(
                 [[y == i for y in x[0] ] for x in WebsitePage.PAGETYPES]
             )
+
+    def test_website_staticpages(self):
+        """
+        Make sure we have all static pages
+        """
         static_page_urls = ['products', 'articles', 'a', 'p', 'search']
-        for i in website_page_types:
+        for i in static_page_urls:
             assert_true(
                 [[y == i for y in x[0] ] for x in WebsitePage.STATIC_PAGES]
             )
         
-    def create_model_website(self):
+    def test_create_model_website(self):
         """
         Test the creation of a website in our tables 
         """
@@ -77,7 +89,8 @@ class TestModelWebsite(TestCase):
         # should parse and remove http:// and www from the domain
         assert_equals(website.domain, 'domain.com')
 
-    def create_model_websitepage(self):
+
+    def test_create_model_websitepage(self):
         """
         When creating a site page, the name is checked first
          - if it is named index, the page type will default to index
@@ -104,6 +117,8 @@ class TestModelWebsite(TestCase):
         website_page_err = WebsitePage(**website_page_data)
         self.assertRaises(ValidationError, website_page_err.save())
         print website_page_err
+
+
 
 
 

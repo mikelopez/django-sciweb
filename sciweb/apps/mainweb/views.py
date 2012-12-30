@@ -12,7 +12,6 @@ import random
 import simplejson
 import logging
 
-
 try:
     from settings import LOG_ON
 except ImportError:
