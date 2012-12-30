@@ -1,4 +1,4 @@
-# Django settings for sciweb project.
+import sys
 
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
@@ -61,6 +61,13 @@ STATIC_ROOT = ''
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
 STATIC_URL = '/static/'
+
+try:
+    from local_settings import *
+except ImportError:
+    print "local_settings.py file is required. Copy local_settings.template to local_settings.py"
+    sys.exit()
+    
 
 # Additional locations of static files
 STATICFILES_DIRS = (

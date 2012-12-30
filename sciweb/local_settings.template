@@ -1,0 +1,52 @@
+from django.conf.urls.defaults import *
+# Uncomment the next two lines to enable the admin:
+
+ENABLE_ADMIN = True
+DEBUG=True
+LOGIN_REDIRECT_URL = '/login/'
+
+# set dev-installed apps 
+DEV_INSTALLED_APPS = (
+  #'appname',
+  
+)
+
+
+# enable or disable admins - uncomment and modify with your url
+if ENABLE_ADMIN:
+  application_url_includes = patterns('',
+    #(r'^admin/(.*)', admin.site.root),
+    #(r'^custom/admin/dir/(.*)', include('webadmin.urls')), 
+  )
+else:
+  application_url_includes = patterns('',)
+
+
+# choose the view for the root URL /
+mastersite_rooturl = patterns('',
+  #url(r'^$', 'web.views.admin_redirect'),
+  url(r'^robots.txt','web.views.robots'),
+  url(r'^$', 'web.views.index', name="main_index"),
+  url(r'^(?P<linkname>\w+)/(?P<filtername>[\w-]+)', 'web.views.index'),
+  url(r'^(?P<linkname>\w+)','web.views.index')
+)
+
+# assuming mysql db
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'db-name',
+        'HOST': '',
+        'PASSWORD': 'dbpassword',
+        'USER': 'db-user'
+
+    }
+}
+DATABASE_ENGINE = 'mysql'
+DATABASE_NAME = ''
+DATABASE_USER = ''
+DATABASE_PASSWORD = ''
+DATABASE_HOST = ''
+DATABASE_PORT = ''
+
+

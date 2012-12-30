@@ -3,6 +3,8 @@ Requirements:
 - South
 
 
-<b>Setup</b>
-place a symlink in sciweb/templates containing any HTML templates required
+<b>Setup</b><br />
+place a symlink in sciweb/templates containing any HTML templates or you can create the directory as well.
+
+
 
