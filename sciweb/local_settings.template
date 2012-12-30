@@ -31,10 +31,10 @@ mastersite_rooturl = patterns('',
   url(r'^(?P<linkname>\w+)','web.views.index')
 )
 
-# assuming mysql db
+# assuming mysql db, ENGINE = django.db.backends.mysql
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': '',
         'NAME': 'db-name',
         'HOST': '',
         'PASSWORD': 'dbpassword',
@@ -42,7 +42,7 @@ DATABASES = {
 
     }
 }
-DATABASE_ENGINE = 'mysql'
+DATABASE_ENGINE = ''
 DATABASE_NAME = ''
 DATABASE_USER = ''
 DATABASE_PASSWORD = ''
