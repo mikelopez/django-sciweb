@@ -13,27 +13,13 @@ from datetime import datetime
 import logging
 
 from mainweb.utils import parse_website
-
+from lib.mainlogger import LoggerLog
 
 try:
     from settings import LOG_ON
 except ImportError:
     LOG_ON = False
 
-
-class LoggerLog(object):
-    """ basic logger class with logging module"""
-    log = ''
-    logger = ''
-
-    def __init__(self, **kwargs):
-        self.log = kwargs.get('log')
-        if kwargs.get('loggerlog'):
-            self.logger = kwargs.get('loggerlog')
-
-    def write(self, msg):
-        if self.log:
-            self.logger.info(msg)
 
 
 def raise_json(data):

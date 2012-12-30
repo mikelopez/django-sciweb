@@ -1,5 +1,14 @@
 
-class LoggerLog:
-    def __init__(self, msg, log=False):
-        if log:
-            logger.info(msg)
+class LoggerLog(object):
+    """ basic logger class with logging module"""
+    log = ''
+    logger = ''
+
+    def __init__(self, **kwargs):
+        self.log = kwargs.get('log')
+        if kwargs.get('loggerlog'):
+            self.logger = kwargs.get('loggerlog')
+
+    def write(self, msg):
+        if self.log:
+            self.logger.info(msg)

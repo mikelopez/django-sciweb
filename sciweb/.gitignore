@@ -1,4 +1,5 @@
 *.pyc
 *.DS_*
 templates/*
+*templates*
 local_settings.py
