@@ -20,7 +20,7 @@ class Website(models.Model):
             return None
 
     def save(self, *args, **kwargs):
-        self.domain = self.domain.replace('http://', '').replace('/','').replace('.', '')
+        self.domain = self.domain.replace('http://', '').replace('/','')
         super(Website, self).save(*args, **kwargs)
 
 
