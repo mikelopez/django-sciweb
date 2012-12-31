@@ -1,8 +1,10 @@
 Requirements
 ============
+Please install the following packages using PIP or easy_install
 
 - Django 1.4.1
 - South >= 0.7.6
 - Django-lettuce >= 0.1.27
 - nosetools
 - Simplejson
+

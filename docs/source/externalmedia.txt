@@ -1,12 +1,55 @@
-External Media (HTML & CSS/Javascript)
+External Media & Templates
 ======================================
+
+Here we will configure our templates, css/javascript & images directories. 
+Comes with Twitter Bootstrap for default CSS & JS
 
 
 1) Place a symlink in sciweb/templates/domains containing any HTML templates or you can create the directory as well. Must be called "domains" ::
-
 ln -s /directory/for/your/templates sciweb/templates/domains
 
 2) (optional) Create a directory called sciweb/static/domains add to .gitignore (must be called domains)::
-
 ln -s /directory/for/your/templates/static/ sciweb/static/domains
 
+
+Default and Sub Templates
+=========================
+
+By default, there is a set of templates located inside ``sciweb/templates/`` 
+These templates are used if there is no subdirectory ``domains`` inside of ``sciweb/templates``
+NOTE: Templates inside the subdirectories must contain the same naming as the default templates.
+so if you are accessing domain.com, and we have sciweb/templates/domains/domain.com/index.html, we will
+serve that file, otherwise, we serve the default sciweb/templates/index.html
+
+
+Default Template Filenames
+==========================
+* index.html
+* show_product.html
+* show_article.html
+* search.html
+* products.html
+* articles.html
+
+
+Linked Media Subdirectories
+===========================
+
+Similar to the templates directory structure, we have a default directory ``sciweb/static``
+This directory is set with MEDIA_URL of /src/ (This can be overrided in local_settings.py)
+
+As of 0.9, we will check for a sub directory inside of the static media directory ``settings.MEDIA_ROOT`` called ``domains``
+If you are accessing domain.com, it will search for ``sciweb/static/domains/domain.com/`` for any directories called ``bootstrap``
+If it is found, then it is used and overrides the default bootstrap files that are being used.
+
+
+The user can choose to use ``{{MEDIA_URL}}/bootstrap/css/bootstrap.css`` to use the default bootstrap.css file
+
+TODO: Need to set the context processor to create a default static media variable usable in all templates which contains 
+the link to the directory where media/template files are found. As of now, hardcoding the media urls into the HTML markup is required 
+to explicitly access a file
+
+
+
+
+    
