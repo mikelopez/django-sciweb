@@ -6,11 +6,9 @@ Comes with Twitter Bootstrap for default CSS & JS
 
 
 1) Place a symlink in sciweb/templates/domains containing any HTML templates or you can create the directory as well. Must be called "domains"
-
 ``ln -s /directory/for/your/templates sciweb/templates/domains``
 
 2) (optional) Create a directory called sciweb/static/domains add to .gitignore (must be called domains)
-
 ``ln -s /directory/for/your/templates/static/ sciweb/static/domains``
 
 
@@ -18,7 +16,9 @@ Default and Sub Templates
 =========================
 
 By default, there is a set of templates located inside ``sciweb/templates/`` 
+
 These templates are used if there is no subdirectory ``domains`` inside of ``sciweb/templates``
+
 NOTE: Templates inside the subdirectories must contain the same naming as the default templates.
 so if you are accessing domain.com, and we have sciweb/templates/domains/domain.com/index.html, we will
 serve that file, otherwise, we serve the default sciweb/templates/index.html
@@ -26,12 +26,13 @@ serve that file, otherwise, we serve the default sciweb/templates/index.html
 
 Default Template Filenames
 ==========================
-* index.html
-* show_product.html
-* show_article.html
-* search.html
-* products.html
-* articles.html
+
+- index.html
+- show_product.html
+- show_article.html
+- search.html
+- products.html
+- articles.html
 
 
 Linked Media Subdirectories
