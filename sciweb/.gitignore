@@ -1,5 +1,5 @@
 *.pyc
 *.DS_*
-templates/domains*
+templates/domains/*
 static/domains*
 local_settings.py
