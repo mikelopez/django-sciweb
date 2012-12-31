@@ -1,0 +1,73 @@
+Local Settings
+==============
+
+Local settings should be created to:
+* Set your database configuration
+* Allow support for multi-dev environments
+* Separate configuration for development/staging/production servers
+* Set admin-on / admin-off settings to open the admin pages 
+
+Local Settings Template
+=======================
+
+The git repository is provided with a template called local_settings.template
+
+Local Settings Code
+====================
+
+You can copy paste this code into your local_settings.py if you are lazy::
+
+    from django.conf.urls.defaults import *
+    # Uncomment the next two lines to enable the admin:
+
+    ENABLE_ADMIN = True
+    DEBUG=True
+    LOGIN_REDIRECT_URL = '/login/'
+
+    # set dev-installed apps 
+    DEV_INSTALLED_APPS = (
+      #'appname',
+      
+    )
+
+
+    # enable or disable admins - uncomment and modify with your url
+    if ENABLE_ADMIN:
+      application_url_includes = patterns('',
+        #(r'^admin/(.*)', admin.site.root),
+        #(r'^custom/admin/dir/(.*)', include('webadmin.urls')), 
+      )
+    else:
+      application_url_includes = patterns('',)
+
+
+    # choose the view for the root URL /
+    mastersite_rooturl = patterns('',
+      #url(r'^$', 'web.views.admin_redirect'),
+      url(r'^robots.txt','web.views.robots'),
+      url(r'^$', 'web.views.index', name="main_index"),
+      url(r'^(?P<linkname>\w+)/(?P<filtername>[\w-]+)', 'web.views.index'),
+      url(r'^(?P<linkname>\w+)','web.views.index')
+    )
+
+    # assuming mysql db, ENGINE = django.db.backends.mysql
+    DATABASES = {
+        'default': {
+            'ENGINE': '',
+            'NAME': 'db-name',
+            'HOST': '',
+            'PASSWORD': 'dbpassword',
+            'USER': 'db-user'
+
+        }
+    }
+    DATABASE_ENGINE = ''
+    DATABASE_NAME = ''
+    DATABASE_USER = ''
+    DATABASE_PASSWORD = ''
+    DATABASE_HOST = ''
+    DATABASE_PORT = ''
+
+
+
+
