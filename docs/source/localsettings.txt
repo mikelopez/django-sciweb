@@ -2,10 +2,13 @@ Local Settings
 ==============
 
 Local settings should be created to:
-* Set your database configuration
-* Allow support for multi-dev environments
-* Separate configuration for development/staging/production servers
-* Set admin-on / admin-off settings to open the admin pages 
+
+- Set your database configuration
+- Allow support for multi-dev environments
+- Separate configuration for development/staging/production servers
+- Set admin-on / admin-off settings to open the admin pages 
+
+
 
 Local Settings Template
 =======================
