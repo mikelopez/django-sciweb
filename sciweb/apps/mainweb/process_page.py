@@ -12,6 +12,7 @@ from mainweb.models import Website, WebsitePage
 #from products.models import Product
 from lib.mainlogger import LoggerLog
 
+import logging
 #from products.views import get_products, get_articles, search_string
 
 try:
