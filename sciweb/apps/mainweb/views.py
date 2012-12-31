@@ -44,5 +44,5 @@ def index(request, linkname=None, filtername=None):
     loggerlog = LoggerLog(log=LOG_ON, loggerlog=logging.getLogger("view_index"))
 
     PageProcessor(request, linkname, filtername)
-    return render_to_response('index.html', {}, RequestContext(request))
+    return render_to_response('scidentify.info/login.html', {}, RequestContext(request))
 
