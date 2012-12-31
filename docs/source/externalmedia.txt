@@ -1,0 +1,12 @@
+External Media (HTML & CSS/Javascript)
+======================================
+
+
+1) Place a symlink in sciweb/templates/domains containing any HTML templates or you can create the directory as well. Must be called "domains" ::
+
+ln -s /directory/for/your/templates sciweb/templates/domains
+
+2) (optional) Create a directory called sciweb/static/domains add to .gitignore (must be called domains)::
+
+ln -s /directory/for/your/templates/static/ sciweb/static/domains
+

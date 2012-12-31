@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Main Documentation for django-sciweb &mdash; django-sciweb 0.9 documentation</title>
+    <title>External Media (HTML &amp; CSS/Javascript) &mdash; django-sciweb 0.9 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -25,8 +25,8 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="django-sciweb 0.9 documentation" href="#" />
-    <link rel="next" title="Requirements" href="requirements.html" /> 
+    <link rel="top" title="django-sciweb 0.9 documentation" href="index.html" />
+    <link rel="prev" title="Requirements" href="requirements.html" /> 
   </head>
   <body>
     <div class="related">
@@ -37,8 +37,8 @@
              accesskey="I">index</a></li>
         <li class="right" >
           <a href="requirements.html" title="Requirements"
-             accesskey="N">next</a> |</li>
-        <li><a href="#">django-sciweb 0.9 documentation</a> &raquo;</li> 
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">django-sciweb 0.9 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -47,17 +47,16 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="main-documentation-for-django-sciweb">
-<h1>Main Documentation for django-sciweb<a class="headerlink" href="#main-documentation-for-django-sciweb" title="Permalink to this headline">¶</a></h1>
-<p>django-sciweb will manage and create websites on the fly
-for general e-commerce and affiliate marketing purposes</p>
-<p>Contents:</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="requirements.html">Requirements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="externalmedia.html">External Media (HTML &amp; CSS/Javascript)</a></li>
-</ul>
-</div>
+  <div class="section" id="external-media-html-css-javascript">
+<h1>External Media (HTML &amp; CSS/Javascript)<a class="headerlink" href="#external-media-html-css-javascript" title="Permalink to this headline">¶</a></h1>
+<ol class="arabic simple">
+<li>Place a symlink in sciweb/templates/domains containing any HTML templates or you can create the directory as well. Must be called &#8220;domains&#8221;</li>
+</ol>
+<p>ln -s /directory/for/your/templates sciweb/templates/domains</p>
+<ol class="arabic simple" start="2">
+<li>(optional) Create a directory called sciweb/static/domains add to .gitignore (must be called domains):</li>
+</ol>
+<p>ln -s /directory/for/your/templates/static/ sciweb/static/domains</p>
 </div>
 
 
@@ -66,12 +65,12 @@ for general e-commerce and affiliate marketing purposes</p>
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-  <h4>Next topic</h4>
+  <h4>Previous topic</h4>
   <p class="topless"><a href="requirements.html"
-                        title="next chapter">Requirements</a></p>
+                        title="previous chapter">Requirements</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
-    <li><a href="_sources/index.txt"
+    <li><a href="_sources/externalmedia.txt"
            rel="nofollow">Show Source</a></li>
   </ul>
 <div id="searchbox" style="display: none">
@@ -99,8 +98,8 @@ for general e-commerce and affiliate marketing purposes</p>
              >index</a></li>
         <li class="right" >
           <a href="requirements.html" title="Requirements"
-             >next</a> |</li>
-        <li><a href="#">django-sciweb 0.9 documentation</a> &raquo;</li> 
+             >previous</a> |</li>
+        <li><a href="index.html">django-sciweb 0.9 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
