@@ -5,8 +5,8 @@ Requirements:
 - nosetools
 - Simplejson
 
-<b>Setup</b><br />
-place a symlink in sciweb/templates/ containing any HTML templates or you can create the directory as well.<br />
-Create a directory called sciweb/static and (optional) add to .gitignore
+<b>Setup External Media</b><br />
+- Place a symlink in sciweb/templates/domains containing any HTML templates or you can create the directory as well.
+- (optional) Create a directory called sciweb/static/domains add to .gitignore
 
 
