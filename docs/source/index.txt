@@ -17,6 +17,7 @@ Contents:
    requirements
    localsettings
    externalmedia
+   changelog
 
 
 
