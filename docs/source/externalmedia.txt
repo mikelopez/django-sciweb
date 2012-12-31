@@ -5,11 +5,13 @@ Here we will configure our templates, css/javascript & images directories.
 Comes with Twitter Bootstrap for default CSS & JS
 
 
-1) Place a symlink in sciweb/templates/domains containing any HTML templates or you can create the directory as well. Must be called "domains" ::
-ln -s /directory/for/your/templates sciweb/templates/domains
+1) Place a symlink in sciweb/templates/domains containing any HTML templates or you can create the directory as well. Must be called "domains"
 
-2) (optional) Create a directory called sciweb/static/domains add to .gitignore (must be called domains)::
-ln -s /directory/for/your/templates/static/ sciweb/static/domains
+``ln -s /directory/for/your/templates sciweb/templates/domains``
+
+2) (optional) Create a directory called sciweb/static/domains add to .gitignore (must be called domains)
+
+``ln -s /directory/for/your/templates/static/ sciweb/static/domains``
 
 
 Default and Sub Templates
