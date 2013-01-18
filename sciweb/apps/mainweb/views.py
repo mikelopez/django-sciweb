@@ -27,11 +27,13 @@ def raise_json(data):
     """
     return HttpResponse(simplejson.dumps(data), mimetype="application/json")
 
+
 def robots(request):
     """ 
         Return robots response
     """
     return HttpResponse('User-agent: *', mimetype="text/plain")
+
 
 def index(request, linkname=None, filtername=None):
     """
@@ -43,6 +45,10 @@ def index(request, linkname=None, filtername=None):
     """
     loggerlog = LoggerLog(log=LOG_ON, loggerlog=logging.getLogger("view_index"))
 
-    PageProcessor(request, linkname, filtername)
-    return render_to_response('scidentify.info/login.html', {}, RequestContext(request))
+    page = PageProcessor(request, linkname, filtername)
+    try:
+        return render(page.template)
+    except page.PageProcessorException:
+        loggerlog.write('Using default template index.html')
+        return render('index.html')
 
