@@ -1,4 +1,4 @@
-from django.shortcuts import render_to_response, get_object_or_404
+from django.shortcuts import render_to_response, get_object_or_404, render
 from django.views.generic.simple import redirect_to
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
@@ -18,7 +18,7 @@ except ImportError:
     LOG_ON = False
 
 from lib.mainlogger import LoggerLog
-from mainweb.process_page import *
+from mainweb.process_page import PageProcessor, PageProcessorException
 
 
 def raise_json(data):
@@ -34,6 +34,12 @@ def robots(request):
     """
     return HttpResponse('User-agent: *', mimetype="text/plain")
 
+def setsession(request, linkname, filtername):
+    """
+    Set the session variables to the context_processor can work
+    """
+    request.session['linkname'] = linkname
+    request.session['filtername'] = filtername
 
 def index(request, linkname=None, filtername=None):
     """
@@ -41,14 +47,22 @@ def index(request, linkname=None, filtername=None):
         Set the logger instance
         -----
         optional linkname: sitename.com/linkname - loads website page with name "linkname"
-        optional filtername: sitename.com/landing/12 - landing page ID 12
+        optional filtername: sitename.com/product/12 - product page ID 12
     """
+    #setsession(request, linkname, filtername)
     loggerlog = LoggerLog(log=LOG_ON, loggerlog=logging.getLogger("view_index"))
-
+    loggerlog.write(request)
     page = PageProcessor(request, linkname, filtername)
     try:
-        return render(page.template)
-    except page.PageProcessorException:
+        return render(request, page.context(), page.get_template())
+    except PageProcessorException:
         loggerlog.write('Using default template index.html')
-        return render('index.html')
+        return render(request, page.context(), 'index.html')
+
+def admin(request):
+    """
+    process admin and crud pages for models 
+    """
+    pass
+    
 

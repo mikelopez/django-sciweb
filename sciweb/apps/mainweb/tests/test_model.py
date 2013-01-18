@@ -36,6 +36,7 @@ class TestModelWebsite(TestCase):
         d['WebsitePage'].append({'name': 'name', 'type': 'str'})
         d['WebsitePage'].append({'name': 'title', 'type': 'str'})
         d['WebsitePage'].append({'name': 'type', 'type': 'str'})
+        d['WebsitePage'].append({'name': 'template', 'type': 'str'})
         d['WebsitePage'].append({'name': 'redirects_to', 'type': 'str'})
     
         self.table_struct = d
