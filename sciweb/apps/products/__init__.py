@@ -1,1 +1,0 @@
-from products.tests.test_model import TestModelProducts
