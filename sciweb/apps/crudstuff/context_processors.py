@@ -6,7 +6,11 @@ log = logging.getLogger('crudstuff.context_processors')
 
 def admin_data(request):
     """
-    creating for possible admin crud use
+    get the model name and return model instance
+    possible actions are: add, edit, show
+    id optional with action show
+    id required with action edit
+    return data dictionary
     """
     if not request.user.is_staff:
         return {}
