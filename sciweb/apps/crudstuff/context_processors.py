@@ -1,0 +1,26 @@
+from django.template import Context
+from django.contrib.contenttypes.models import ContentType
+import logging
+log = logging.getLogger('crudstuff.context_processors')
+
+
+def admin_data(request):
+    """
+    creating for possible admin crud use
+    """
+    if not request.user.is_staff:
+        return {}
+    model_name = request.session.get('model')
+    action = request.session.get('action')
+    value = request.session.get('id')
+
+    # get the model
+    try:
+        ctype = ContentType.objects.get(model=model_name)
+    except ContentType.DoesNotExist:
+        log.info('Model does not exist %s' % model_name)
+        raise Exception('Model does not exist')
+
+    model = ctype.model_class()
+    return {'model': model, 'action': action, 'value': value}
+    
