@@ -63,7 +63,7 @@ class PageProcessor(object):
         self.filtername = filtername
         self.request = request
         if not request:
-            raise PageProcessorException('An error occured, no valid request')
+            raise PageProcessorException('An error occured, not a valid request')
         self.process_page()
 
 
@@ -86,6 +86,7 @@ class PageProcessor(object):
         page = self.get_websitepage()
         self.pagetype = page.type
         self.template = page.template
+        # call the pagetype method of action
         self.process_pagetype()
 
     def process_pagetype(self):
@@ -95,13 +96,17 @@ class PageProcessor(object):
         static-arg will need to have filtername set
         """
         if self.pagetype == 'static-arg':
-            self.static_arg_page()
+            #self.static_arg_page()
+            pass
         if self.pagetype == 'static':
-            self.static_page()
+            #self.static_page()
+            pass
         if self.pagetype == 'index':
-            self.index_page()
+            #self.index_page()
+            pass
         if self.pagetype == 'sub-landing':
-            self.sub_landing_page()
+            #self.sub_landing_page()
+            pass
 
     def get_index(self):
         """
