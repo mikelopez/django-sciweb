@@ -8,9 +8,3 @@ def index_data(request, linkname=None, filtername=None):
     """
     return {}
 
-def admin_data(request):
-    """
-    creating for possible admin crud use
-    """
-    if not request.user.is_staff:
-        return {}

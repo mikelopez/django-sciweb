@@ -8,6 +8,14 @@ from django.core.urlresolvers import reverse, resolve
 from django.template import RequestContext, loader, Context
 from datetime import datetime
 
-def index(request):
-    pass
+
+
+def index(request, model=None, action=None, id=None):
+    """
+    Todo: Write context processor for admin stuff
+    """
+    request.session['model'] = model
+    request.session['action'] = action
+    request.session['id'] = id
+    return HttpResponse
     
