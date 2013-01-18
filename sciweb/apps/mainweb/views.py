@@ -51,7 +51,6 @@ def index(request, linkname=None, filtername=None):
     """
     #setsession(request, linkname, filtername)
     loggerlog = LoggerLog(log=LOG_ON, loggerlog=logging.getLogger("view_index"))
-    loggerlog.write(request)
     page = PageProcessor(request, linkname, filtername)
     try:
         return render(request, page.context(), page.get_template())
@@ -64,5 +63,5 @@ def admin(request):
     process admin and crud pages for models 
     """
     pass
-    
+
 
