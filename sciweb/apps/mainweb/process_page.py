@@ -14,7 +14,7 @@ from lib.mainlogger import LoggerLog
 
 import logging
 #from products.views import get_products, get_articles, search_string
-
+from settings import STATIC_PAGES
 try:
     from settings import LOG_ON
 except ImportError:
@@ -33,6 +33,7 @@ class PageProcessor(object):
     """
     linkname = None
     filtername = None
+    template = None
     logger = LoggerLog(log=LOG_ON, loggerlog=logging.getLogger('mainweb.process_page'))
 
     def __init__(self, request, linkname, filtername):
@@ -49,8 +50,9 @@ class PageProcessor(object):
         Here we will examine the URL and determine if it is a static
         URL, or if it is a WebsitePage
         """
-        if self.linkname in WebsitePage.STATIC_PAGES:
+        if self.linkname in STATIC_PAGES:
             # it is a static-url
+
             pass
         # not a static url
         pass

@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.exceptions import ValidationError
+from settings import STATIC_PAGES
 
 blankfield = {'blank': True, 'null': True}
 
@@ -36,7 +37,7 @@ class WebsitePage(models.Model):
       
     """
     PAGETYPES = (('sub', 'sub',), ('landing','landing',), ('index', 'index',),('static', 'static',),)
-    STATIC_PAGES = ['products', 'p', 'articles', 'a', 'search']
+    
 
     custom_blankfield = blankfield
     custom_blankfield['max_length']= 30
@@ -45,6 +46,7 @@ class WebsitePage(models.Model):
     title = models.CharField(max_length=30, default='')
     name = models.CharField(max_length=20, default='index')
     type = models.CharField(max_length=15, choices=PAGETYPES)
+    template = models.CharField(max_length=50, blank=True, null=True)
     redirects_to = models.CharField(**custom_blankfield)
 
     def save(self, *args, **kwargs):
@@ -60,7 +62,7 @@ class WebsitePage(models.Model):
         if not self.title:
             self.title = self.name
         # do not allow page names of static URLS
-        if self.name in self.STATIC_PAGES:
-            raise ValidationError('Page name cannot be in static pages: %s' % str([x for x in self.STATIC_PAGES]))
+        if self.name in STATIC_PAGES:
+            raise ValidationError('Page name cannot be in static pages: %s' % str([x for x in STATIC_PAGES]))
         super(WebsitePage, self).save(*args, **kwargs)
 
