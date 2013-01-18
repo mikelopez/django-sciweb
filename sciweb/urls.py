@@ -19,8 +19,8 @@ urlpatterns = patterns('',
 try:
     from settings import mastersite_rooturl as rooturl, \
         application_url_includes as appurls
-    urlpatterns += rooturl
     urlpatterns += appurls
+    urlpatterns += rooturl
 
 except ImportError:
     pass
