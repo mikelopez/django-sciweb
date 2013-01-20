@@ -4,6 +4,7 @@ import logging
 log = logging.getLogger('crudstuff.context_processors')
 from bindmodels import admin_models
 
+
 def admin_data(request):
     """
     get the model name and return model instance
@@ -36,7 +37,7 @@ def admin_data(request):
 
     # return the models list for nav
     log.info('returing model list')
-    models_list = admin_models
+    models_list = admin_models().models.keys()
 
     if model:
         if action == 'show':

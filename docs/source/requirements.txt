@@ -7,4 +7,5 @@ Please install the following packages using PIP or easy_install
 - Django-lettuce >= 0.1.27
 - nosetools
 - Simplejson
+- importlib
 
