@@ -8,6 +8,17 @@ Main Documentation for django-sciweb
 django-sciweb will manage and create websites on the fly
 for general e-commerce and affiliate marketing purposes
 
+Static Directories
+------------------
+Use the test file fo check for the static directories
+Test file is located ``apps/mainweb/tests/test_settings.py - TestSettings.test_static_directories``
+
+* ``PROJECT_DIR/static/`` - The main static directory
+* ``PROJECT_DIR/static/bootstrap`` The default bootstrap css/js files
+* ``PROJECT_DIR/static/crudstuff`` The directory for custom crudstuff css/js/img
+* ``PROJECT_DIR/static/domains`` This folder will contain subfolders named as domain.com for the particular website
+It will always search for this directory first, falling back to the default templates located inside apps/mainweb/templates
+
 
 Contents:
 

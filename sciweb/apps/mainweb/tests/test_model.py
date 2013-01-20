@@ -2,7 +2,7 @@ from django.test import TestCase
 from nose.tools import assert_true, assert_equals, assert_false
 from django.core.exceptions import ValidationError
 from mainweb.models import Website, WebsitePage
-
+from settings import STATIC_PAGES, STATIC_ARG_PAGES
 
 
 class TestModelWebsite(TestCase):
@@ -65,7 +65,7 @@ class TestModelWebsite(TestCase):
         """
         Make sure we have all page typs 
         """
-        website_page_types = ['index', 'sub', 'landing', 'static']
+        website_page_types = ['index', 'sub-landing', 'static', 'static-arg']
         for i in website_page_types:
             assert_true(
                 [[y == i for y in x[0] ] for x in WebsitePage.PAGETYPES]
@@ -75,10 +75,15 @@ class TestModelWebsite(TestCase):
         """
         Make sure we have all static pages
         """
-        static_page_urls = ['products', 'articles', 'a', 'p', 'search']
+        static_page_urls = ['products', 'articles']
+        static_arg_page_urls = ['p', 'search', 'a']
         for i in static_page_urls:
             assert_true(
-                [[y == i for y in x[0] ] for x in WebsitePage.STATIC_PAGES]
+                [[y == i for y in x[0] ] for x in STATIC_PAGES]
+            )
+        for i in static_arg_page_urls:
+            assert_true(
+                [[y == i for y in x[0] ] for x in STATIC_ARG_PAGES]
             )
         
     def test_create_model_website(self):
@@ -103,17 +108,19 @@ class TestModelWebsite(TestCase):
         # website page should default to type=index because the page name is index
         website_page_data = {'website': website, 'name': 'index', 'title': 'Index Page', \
             'type': '', 'redirects_to': ''}
-        website_page_index = WebsitePage(**website_page_data).save()
+        website_page_index = WebsitePage(**website_page_data)
+        website_page_index.save()
         assert_equals(website_page_index.type, 'index')
 
         #websitepage should be default to type=default because type is empty
         website_page_data = {'website': website, 'name': 'contactus', 'title': 'Contact Page', \
             'type': '', 'redirects_to': ''}
-        website_page_default = WebsitePage(**website_page_data).save()
-        assert_equals(website_page_default.type, 'sub')
+        website_page_default = WebsitePage(**website_page_data)
+        website_page_default.save()
+        assert_equals(website_page_default.type, 'sub-landing')
 
         #website page should not save if it is any of the static urls - will try products - should NOT save
-        website_page_data = {'website': website, 'name': 'products', 'title': 'Products Page', \
+        website_page_data = {'website': website, 'name': STATIC_PAGES[0], 'title': STATIC_PAGES[0], \
             'type': '', 'redirects_to': ''}
         website_page_err = WebsitePage(**website_page_data)
         self.assertRaises(ValidationError, website_page_err.save())

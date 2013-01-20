@@ -1,6 +1,13 @@
 Changelog
 =========
 
+v0.9.2 2013-01-19
+-----------------
+* Implemented crudstuff admin app
+* Template structure app-based
+
+
+
 v0.9.1 2012-12-31
 -----------------
 * Added the templates directory with base templates (index, index-carousel, login)

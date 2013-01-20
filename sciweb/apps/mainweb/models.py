@@ -1,6 +1,6 @@
 from django.db import models
 from django.core.exceptions import ValidationError
-from settings import STATIC_PAGES
+from settings import STATIC_PAGES, STATIC_ARG_PAGES
 
 blankfield = {'blank': True, 'null': True}
 
@@ -38,10 +38,10 @@ class WebsitePage(models.Model):
       - Sub-Landing: Defines a custom subpage or landing page at the top level or url (sitename.com/subpage) - 
           this has to be a name that is not defined in as a "static" url. For example, a contact us page specific
           for the site you are making, or a landing page for marketing
-      - Landing: Landing page will require 
+
       
     """
-    PAGETYPES = (('sub-landing', 'sub-landing',), ('landing','landing',), \
+    PAGETYPES = (('sub-landing', 'sub-landing',), ('index', 'index'), \
         ('static', 'static',),('static-arg', 'static-arg',),)
     
     custom_blankfield = blankfield
@@ -50,24 +50,35 @@ class WebsitePage(models.Model):
     website = models.ForeignKey('Website')
     title = models.CharField(max_length=30, default='')
     name = models.CharField(max_length=20, default='index')
-    type = models.CharField(max_length=15, choices=PAGETYPES)
+    type = models.CharField(max_length=15, choices=PAGETYPES, default='sub-landing')
     template = models.CharField(max_length=50, blank=True, null=True)
     redirects_to = models.CharField(**custom_blankfield)
 
     def save(self, *args, **kwargs):
         """ 
         Parse the name and save 
-        raise validation error if name is in static-pages list
+        raise validation error if name is in static-pages or 
+        static-arg-page list
+        if name is index, set type to index
+
         """
         self.name = self.name.lower().replace(' ', '_').replace('.','').replace('/','')
         # override index as type if name matches
         if self.name == 'index':
             self.type = 'index'
+
         # override title if nothing is set
         if not self.title:
             self.title = self.name
+
         # do not allow page names of static URLS
         if self.name in STATIC_PAGES:
             raise ValidationError('Page name cannot be in static pages: %s' % str([x for x in STATIC_PAGES]))
+        if self.name in STATIC_ARG_PAGES:
+            raise ValidationError('Page name cannot be in static pages: %s' % str([x for x in STATIC_ARG_PAGES]))
+            
+        # just incase
+        if not self.type:
+            self.type = self.PAGETYPES[0][0]
         super(WebsitePage, self).save(*args, **kwargs)
 
