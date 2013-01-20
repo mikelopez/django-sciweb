@@ -44,7 +44,7 @@ class TestSettings(TestCase):
             '/static/bootstrap/js',
             '/static/bootstrap/css/bootstrap.css',
             '/apps/mainweb/templates/index.html',
-            '/apps/mainweb/templates/login.html',
+            '/apps/mainweb/templates/registration/login.html',
             '/apps/mainweb/templates/index-carousel.html',
 
         ]
