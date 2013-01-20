@@ -18,5 +18,5 @@ def index(request, model=None, action=None, id=None):
     request.session['model'] = model
     request.session['action'] = action
     request.session['id'] = id
-    return render(request, 'crudstuff/index-fluid.html')
+    return render(request, 'crudstuff/crud-index.html')
     

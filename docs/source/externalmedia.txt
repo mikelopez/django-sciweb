@@ -14,8 +14,19 @@ Comes with Twitter Bootstrap for default CSS & JS
 ``ln -s /directory/for/your/templates/static/ sciweb/static/domains``
 
 
-Default and Sub Templates
-=========================
+Crudstuff Templates
+===================
+These are the templates that are served by default with the crud admin. 
+- crud-index.html
+
+
+Overriding Default Admin templates
+=================================
+TODO!
+
+
+Website Default and Sub Templates
+==================================
 
 By default, there is a set of templates located inside ``sciweb/templates/`` 
 

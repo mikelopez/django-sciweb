@@ -3,13 +3,14 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Bootstrap, from Twitter</title>
+    <title>Sciweb Admin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
 
     <!-- Le styles -->
     <link href="{{MEDIA_URL}}bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="{{MEDIA_URL}}crudstuff/css/overrides.css" rel="stylesheet">
     <style type="text/css">
       body {
         padding-top: 60px;
@@ -44,7 +45,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">Project name</a>
+          <a class="brand" href="#">Scidentify</a>
           <div class="nav-collapse collapse">
             <p class="navbar-text pull-right">
               {% if user %}
@@ -119,7 +120,9 @@
           {% endifequal %}
 
           {% ifequal action 'add' %}
+          <form action="{% url crudstuff_index %}/{{model_name}}/add">
             <h3>New {{model_name}}</h3><hr />{{model_form}}
+          </form>
           {% endifequal %}
 
 
