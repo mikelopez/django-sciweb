@@ -6,5 +6,5 @@ def index_data(request, linkname=None, filtername=None):
     """
     creating for possible future use
     """
-    return {}
+    return Context({})
 

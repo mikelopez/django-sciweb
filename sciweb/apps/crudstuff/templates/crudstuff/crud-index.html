@@ -107,6 +107,7 @@
             {% endifnotequal %}
           {% endifnotequal %}
 
+
           {% ifequal action 'show' %}
           <table class="table table-bordered">
             {% for i in model_values %}
@@ -119,10 +120,20 @@
           </table>
           {% endifequal %}
 
+
+
           {% ifequal action 'add' %}
-          <form action="{% url crudstuff_index %}/{{model_name}}/add">
-            <h3>New {{model_name}}</h3><hr />{{model_form}}
-          </form>
+            <h3>New {{model_name|capfirst}}</h3><hr />
+            {% if posted %}
+              {% if not form.errors %}
+                <div class="alert alert-success">Saved!</div>
+              {% endif %}
+            {% endif %}
+            <form action="{% url crudstuff_index %}/{{model_name}}/add" method="POST">{% csrf_token %}
+              {{model_form}}
+              <div class="linebreak10"></div>
+              <input type="submit" value="Save" class="btn btn-large btn-danger"/>
+            </form>
           {% endifequal %}
 
 
@@ -130,8 +141,11 @@
         </div><!--/span-->
       </div><!--/row-->
 
-      <hr>
+      <hr />
 
+
+
+      <!-- FOOTER -->
       <footer>
         <p>&copy; Company 2012</p>
       </footer>

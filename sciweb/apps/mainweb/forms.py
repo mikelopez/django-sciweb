@@ -13,16 +13,21 @@ class WebsiteForm(forms.Form):
 
   """
   domain = forms.CharField(max_length=40)
-  meta_key = forms.CharField(max_length=50)
-  meta_desc = forms.CharField(widget=forms.Textarea)
-  notes = forms.CharField(widget=forms.Textarea)
+  meta_key = forms.CharField(max_length=50, required=False)
+  meta_desc = forms.CharField(widget=forms.Textarea, required=False)
+  notes = forms.CharField(widget=forms.Textarea, required=False)
   
   
   def clean(self):
     return self.cleaned_data
 
   def save(self):
-    pass
+    """
+    Save the website object
+    """
+    website = Website(**self.cleaned_data)
+    website.save()
+    
 
 class WebsitePageForm(forms.Form):
   """

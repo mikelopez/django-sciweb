@@ -9,12 +9,15 @@ from django.template import RequestContext, loader, Context
 from datetime import datetime
 from django.contrib.auth.decorators import user_passes_test
 
+import logging
+log = logging.getLogger('crudstuff.views')
 
 #@user_passes_test(lambda u: u.is_staff)
 def index(request, model=None, action=None, id=None):
     """
     Context processor checks for models and returns model list
     """
+    log.info('Test Views')
     request.session['model'] = model
     request.session['action'] = action
     request.session['id'] = id

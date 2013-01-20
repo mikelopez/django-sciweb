@@ -34,7 +34,7 @@ class admin_models:
 
     def get_form_by_model(self, k):
         """
-        get the form class by the model name and app name
+        get the form class instance by the model name and app name
         """
         app = self.get_app_by_model(k)
         if not app:
