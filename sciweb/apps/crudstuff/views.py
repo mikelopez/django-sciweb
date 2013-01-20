@@ -7,15 +7,16 @@ from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from django.core.urlresolvers import reverse, resolve
 from django.template import RequestContext, loader, Context
 from datetime import datetime
+from django.contrib.auth.decorators import user_passes_test
 
 
-
+@user_passes_test(lambda u: u.is_staff)
 def index(request, model=None, action=None, id=None):
     """
-    Todo: Write context processor for admin stuff
+    Context processor checks for models and returns model list
     """
     request.session['model'] = model
     request.session['action'] = action
     request.session['id'] = id
-    return render(request, 'mainweb/index-fluid.html')
+    return render(request, 'crudstuff/index-fluid.html')
     

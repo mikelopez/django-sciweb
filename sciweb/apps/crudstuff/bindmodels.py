@@ -1,0 +1,1 @@
+admin_models = ['website', 'websitepage']
