@@ -1,3 +1,5 @@
+import importlib
+
 class admin_models:
     """ class wrapper for admin_models data dict """
     models = {
@@ -34,3 +36,12 @@ class admin_models:
         """
         get the form class by the model name and app name
         """
+        app = self.get_app_by_model(k)
+        if not app:
+            raise Exception('App is not found for model %s ' % k)
+
+        forms_module = importlib.import_module('%s.forms'%(app))
+        form = getattr(forms_module, self.forms.get(k))
+        if not form:
+            raise Exception('Form %s not found for %s ' % (data.forms.get(k), app))
+        return form

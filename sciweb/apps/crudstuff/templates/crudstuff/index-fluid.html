@@ -90,17 +90,21 @@
         </div><!--/span-->
         <div class="span9">
 
-          <div class="hero-unit">
-            <h1>{{model_name|capfirst}}</h1>
-            <p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-            <p><a class="btn btn-large btn-success" href="{% url crudstuff_index %}/{{model_name}}/show">View List &raquo;</a>
-              &nbsp;&nbsp;&nbsp;
-              <a class="btn btn-large btn-success" href="{% url crudstuff_index %}/{{model_name}}/add">Add {{model_name|capfirst}} &raquo;</a>
-              &nbsp;&nbsp;&nbsp;
-              
+          {% ifnotequal action 'add' %}
+            {% ifnotequal action 'edit' %}
+              <div class="hero-unit">
+                <h1>{{model_name|capfirst}}</h1>
+                <p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+                <p><a class="btn btn-large btn-success" href="{% url crudstuff_index %}/{{model_name}}/show">View List &raquo;</a>
+                  &nbsp;&nbsp;&nbsp;
+                  <a class="btn btn-large btn-success" href="{% url crudstuff_index %}/{{model_name}}/add">Add {{model_name|capfirst}} &raquo;</a>
+                  &nbsp;&nbsp;&nbsp;
+                  
 
-            </p>
-          </div>
+                </p>
+              </div>
+            {% endifnotequal %}
+          {% endifnotequal %}
 
           {% ifequal action 'show' %}
           <table class="table table-bordered">
@@ -115,7 +119,7 @@
           {% endifequal %}
 
           {% ifequal action 'add' %}
-            {{form}}
+            <h3>New {{model_name}}</h3><hr />{{model_form}}
           {% endifequal %}
 
 

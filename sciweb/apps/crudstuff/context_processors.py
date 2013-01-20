@@ -13,9 +13,6 @@ def admin_data(request):
     id required with action edit
     return data dictionary
     """
-    if not request.user.is_staff:
-        log.info('Not admin')
-        return {}
 
     model_name = request.session.get('model')
     action = request.session.get('action')
@@ -24,8 +21,11 @@ def admin_data(request):
     model = None
     models_list = None
     model_values = None
+    model_form = None
 
-    # get the model
+    log.info("action %s" % action)
+
+    # set the model
     if model_name:
         log.info('Model set to %s' % model_name)
         try:
@@ -36,7 +36,6 @@ def admin_data(request):
         model = ctype.model_class()
 
     # return the models list for nav
-    log.info('returing model list')
     models_list = admin_models().models.keys()
 
     if model:
@@ -45,11 +44,12 @@ def admin_data(request):
         if action == 'edit':
             pass
         if action == 'add':
+            model_form = admin_models().get_form_by_model(model_name)
             pass
         if action == 'remove':
             pass
 
     
     return {'model_name': model_name, 'model': model, 'action': action, 'value': value,\
-        'models_list': models_list, 'model_values': model_values}
+        'models_list': models_list, 'model_values': model_values, 'model_form': model_form}
     

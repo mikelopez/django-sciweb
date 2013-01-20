@@ -10,7 +10,7 @@ from datetime import datetime
 from django.contrib.auth.decorators import user_passes_test
 
 
-@user_passes_test(lambda u: u.is_staff)
+#@user_passes_test(lambda u: u.is_staff)
 def index(request, model=None, action=None, id=None):
     """
     Context processor checks for models and returns model list
