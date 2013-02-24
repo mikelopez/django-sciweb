@@ -1,1 +1,0 @@
-from crudstuff.tests.test_bind_models import TestBindModels

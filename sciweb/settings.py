@@ -186,6 +186,11 @@ LOGGING = {
     }
 }
 
-TEST_RUNNER = 'sciweb.testrunner.BaseAppsTestNoDb'
+#TEST_RUNNER = 'sciweb.testrunner.BaseAppsTestNoDb'
+
 BOOTSTRAP_DIR = '%sbootstrap' % MEDIA_URL
+
+TEMPLATE_PATH = '%s/apps/mainweb/templates/mainweb' % PROJECT_ROOTDIR
+
+
 

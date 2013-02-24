@@ -13,6 +13,12 @@ class Website(models.Model):
     meta_key = models.TextField(**blankfield)
     notes = models.TextField(**blankfield)
 
+    def __str__(self):
+        return self.domain
+
+    def __unicode__(self):
+        return self.domain
+
     def get_index_page(self):
         """ get the index page """
         try:
@@ -21,9 +27,12 @@ class Website(models.Model):
             return None
 
     def save(self, *args, **kwargs):
-        self.domain = self.domain.replace('http://', '').replace('/','').replace('www','')
-        super(Website, self).save(*args, **kwargs)
-
+        self.domain = self.domain.replace('http://', '').replace('/','').replace('www','').split(':')[0]
+        try:
+            website = Website.objects.get(domain=self.domain)
+            pass
+        except Website.DoesNotExist:
+            super(Website, self).save(*args, **kwargs)
 
 
 class WebsitePage(models.Model):
@@ -39,7 +48,6 @@ class WebsitePage(models.Model):
           this has to be a name that is not defined in as a "static" url. For example, a contact us page specific
           for the site you are making, or a landing page for marketing
 
-      
     """
     PAGETYPES = (('sub-landing', 'sub-landing',), ('index', 'index'), \
         ('static', 'static',),('static-arg', 'static-arg',),)
@@ -53,7 +61,13 @@ class WebsitePage(models.Model):
     type = models.CharField(max_length=15, choices=PAGETYPES, default='sub-landing')
     template = models.CharField(max_length=50, blank=True, null=True)
     redirects_to = models.CharField(**custom_blankfield)
+    class Meta:
+        ordering = ('website',)
 
+    def __str__(self):
+        return str("%s / %s" % (self.website.domain, self.name))
+    def __unicode__(self):
+        return unicode("%s / %s" % (self.website.domain, self.name))
     def save(self, *args, **kwargs):
         """ 
         Parse the name and save 
@@ -73,9 +87,11 @@ class WebsitePage(models.Model):
 
         # do not allow page names of static URLS
         if self.name in STATIC_PAGES:
-            raise ValidationError('Page name cannot be in static pages: %s' % str([x for x in STATIC_PAGES]))
+            self.type = 'static'
+            #raise ValidationError('Page name cannot be in static pages: %s' % str([x for x in STATIC_PAGES]))
         if self.name in STATIC_ARG_PAGES:
-            raise ValidationError('Page name cannot be in static pages: %s' % str([x for x in STATIC_ARG_PAGES]))
+            self.type = 'static-arg'
+            #raise ValidationError('Page name cannot be in static pages: %s' % str([x for x in STATIC_ARG_PAGES]))
             
         # just incase
         if not self.type:

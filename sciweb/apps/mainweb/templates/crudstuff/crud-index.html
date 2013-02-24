@@ -45,7 +45,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">Scidentify</a>
+          <a class="brand" href="#">Sciweb Commerce Admin</a>
           <div class="nav-collapse collapse">
             <p class="navbar-text pull-right">
               {% if user %}
@@ -56,9 +56,8 @@
               {% endif %}
             </p>
             <ul class="nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#contact">Contact</a></li>
+              <li class="active"><a href="{% url crudstuff_index %}">Home</a></li>
+
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -94,12 +93,20 @@
           {% ifnotequal action 'add' %}
             {% ifnotequal action 'edit' %}
               <div class="hero-unit">
-                <h1>{{model_name|capfirst}}</h1>
-                <p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-                <p><a class="btn btn-large btn-success" href="{% url crudstuff_index %}/{{model_name}}/show">View List &raquo;</a>
+                {% if not model_name %}
+                  <h1>Select model on left</h1>
+                  <p>Select one of the model tables on the left and begin building your site. Start with website, add website pages, and have fun!</p>
+                  
+                  &nbsp;&nbsp;&nbsp;
+                {% else %}
+                  <h1>{{model_name|capfirst}}</h1>
+                  <p>Select one of the model tables on the left and begin building your site. Start with website, add website pages, and have fun!</p>
+                  <p><a class="btn btn-large btn-success" href="{% url crudstuff_index %}/{{model_name}}/show">View List &raquo;</a>
                   &nbsp;&nbsp;&nbsp;
                   <a class="btn btn-large btn-success" href="{% url crudstuff_index %}/{{model_name}}/add">Add {{model_name|capfirst}} &raquo;</a>
                   &nbsp;&nbsp;&nbsp;
+                {% endif %}
+                
                   
 
                 </p>
@@ -111,15 +118,13 @@
           {% ifequal action 'show' %}
           <table class="table table-bordered">
             {% for i in model_values %}
-            <tr>
-              <td>{{i.domain}}</td>
-              <td>{{i.meta_key}}</td>
-              <td>{{i.meta_desc}}</td>
-            </tr>
+              <tr>
+                <td><a href="{% url crudstuff_index %}/{{model_name}}/edit/{{i.id}}">{{i}}</a></td>
+                
+              </tr>
             {% endfor %}
           </table>
           {% endifequal %}
-
 
 
           {% ifequal action 'add' %}
@@ -136,6 +141,20 @@
             </form>
           {% endifequal %}
 
+
+          {% ifequal action 'edit' %}
+            <h3>New {{model_name|capfirst}}</h3><hr />
+            {% if posted %}
+              {% if not form.errors %}
+                <div class="alert alert-success">Saved!</div>
+              {% endif %}
+            {% endif %}
+            <form action="{% url crudstuff_index %}/{{model_name}}/edit/{{value}}" method="POST">{% csrf_token %}
+              {{model_form}}
+              <div class="linebreak10"></div>
+              <input type="submit" value="Save" class="btn btn-large btn-danger"/>
+            </form>
+          {% endifequal %}
 
 
         </div><!--/span-->
