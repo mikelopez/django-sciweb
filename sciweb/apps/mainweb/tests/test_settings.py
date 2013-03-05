@@ -28,7 +28,9 @@ class TestSettings(TestCase):
         """
         l = ['PROJECT_ROOTDIR', 'DEV_INSTALLED_APPS', 'DEV_MIDDLEWARE_CLASSES', \
             'application_url_includes', 'mastersite_rooturl', 'STATIC_PAGES', \
-            'STATIC_ARG_PAGES', 'SHOP_SEARCH', 'SHOP_COMPARE']
+            'STATIC_ARG_PAGES', 'SHOP_SEARCH', 'SHOP_COMPARE', 'SHOPZILLA_OUTPUT_FILE', \
+            'SHOP_CATEGORY'
+        ]
         
         for k in l:
             self.assertTrue(getattr(settings, k))
@@ -47,9 +49,9 @@ class TestSettings(TestCase):
             '/static/bootstrap/css/bootstrap-responsive.css',
             '/static/bootstrap/js/bootstrap.js',
             '/static/crudstuff/css/overrides.css',
-            '/apps/mainweb/templates/index.html',
+            '/apps/mainweb/templates/mainweb/index.html',
             '/apps/mainweb/templates/registration/login.html',
-            '/apps/mainweb/templates/index-carousel.html',
+            '/apps/mainweb/templates/mainweb/index-carousel.html',
 
         ]
         for k in files_should_exist:

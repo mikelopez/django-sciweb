@@ -103,3 +103,13 @@ class WebsitePage(models.Model):
             self.type = self.PAGETYPES[0][0]
         super(WebsitePage, self).save(*args, **kwargs)
 
+
+class ShopCategory(models.Model):
+    """
+    Categories list form shopzilla - top level 
+    """
+    name = models.CharField(max_length=40)
+    shop_id = models.CharField(max_length=15)
+    
+
+
