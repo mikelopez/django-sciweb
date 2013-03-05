@@ -11,12 +11,12 @@ from datetime import datetime
 from mainweb.models import Website, WebsitePage
 #from products.models import Product
 from lib.mainlogger import LoggerLog
-from utils import get_meta_domain, shopzilla_search
+from utils import get_meta_domain, shopzilla_search, shopzilla_compare
 import logging
 import os
 
 from settings import STATIC_PAGES, PROJECT_ROOTDIR, STATIC_ARG_PAGES, TEMPLATE_PATH, STATIC_URL, \
-SHOPZILLA_TOKEN, SHOPZILLA_PUB_TOKEN, SHOPZILLA_OUTPUT_FILE
+SHOPZILLA_TOKEN, SHOPZILLA_PUB_TOKEN, SHOPZILLA_OUTPUT_FILE, SHOP_SEARCH, SHOP_COMPARE
 
 try:
     from settings import LOG_ON
@@ -128,9 +128,15 @@ class PageProcessor(object):
         if self.pagetype == 'static-arg':
             self.logger.write('Static ARG page')
             #self.static_arg_page()
-            if self.linkname == 'shopsearch':
+            if self.linkname == SHOP_SEARCH:
                 self.logger.write('Searching shopzilla: %s' % self.filtername)
                 self.shopzilla_products = shopzilla_search(\
+                        SHOPZILLA_PUB_TOKEN, SHOPZILLA_TOKEN, self.filtername, \
+                        debug=True, debug_filename=SHOPZILLA_OUTPUT_FILE)
+
+            if self.linkname == SHOP_COMPARE:
+                self.logger.write('Searching shopzilla: %s' % self.filtername)
+                self.shopzilla_products = shopzilla_compare(\
                         SHOPZILLA_PUB_TOKEN, SHOPZILLA_TOKEN, self.filtername, \
                         debug=True, debug_filename=SHOPZILLA_OUTPUT_FILE)
 

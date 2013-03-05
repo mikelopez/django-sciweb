@@ -28,7 +28,7 @@ class TestSettings(TestCase):
         """
         l = ['PROJECT_ROOTDIR', 'DEV_INSTALLED_APPS', 'DEV_MIDDLEWARE_CLASSES', \
             'application_url_includes', 'mastersite_rooturl', 'STATIC_PAGES', \
-            'STATIC_ARG_PAGES']
+            'STATIC_ARG_PAGES', 'SHOP_SEARCH', 'SHOP_COMPARE']
         
         for k in l:
             self.assertTrue(getattr(settings, k))

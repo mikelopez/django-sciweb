@@ -32,10 +32,12 @@ def shopzilla_search(pubtoken, token, search_for, debug=False, debug_filename=No
     and debug_filename specifies which debug file to write
     """ 
     data = {'apiKey': token, 'publisherId': pubtoken, 'keyword': search_for,\
-        'resultsOffers': 3, 'productId': ''}
+        'resultsOffers': 3, 'productId': '', 'results': '250'}
 
     # to do - sanitize sarch_string 
     shop = ShopzillaAPI(**data)
+    shop.bidded_only()
+    shop.contains_images()
     shop.read_response(debug=debug, debug_filename=debug_filename)
     try: 
         shop.parse_json()
@@ -59,3 +61,44 @@ def shopzilla_search(pubtoken, token, search_for, debug=False, debug_filename=No
             pass 
         counter += 1
     return affiliated_products
+
+def shopzilla_compare(pubtoken, token, search_for, debug=False, debug_filename=None):
+    """
+    Perform API search 
+    requires: pubtoken, token, search_for (string) of the productId
+    optional debug to create a file output
+    and debug_filename specifies which debug file to write
+    """ 
+    data = {'apiKey': token, 'publisherId': pubtoken, 'keyword': '',\
+        'resultsOffers': 50, 'productId': search_for, 'results': '250'}
+    
+    # to do - sanitize sarch_string 
+    shop = ShopzillaAPI(**data)
+    shop.bidded_only()
+    shop.contains_images()
+    shop.read_response(debug=debug, debug_filename=debug_filename)
+    try: 
+        shop.parse_json()
+    except:
+        shop.json_data = shop.response_data
+
+    affiliated_products = shop.json_data
+    try: 
+        if not affiliated_products.get('products', None):
+            affiliated_products = {'products': {'product':[]} }
+    except AttributeError:
+        affiliated_products = {'products': {'product':[]} }
+
+    counter = 0
+    for i in affiliated_products['products']['product']:
+        offer_counter = 0
+        for offer in i['offers']['offer']:
+            try:
+                affiliated_products['products']['product'][counter]['offers']['offer'][offer_counter]['short_name'] = str(i['title'][:130])
+            except KeyError:
+                pass
+            offer_counter += 1
+        counter += 1
+    return affiliated_products
+ 
+
