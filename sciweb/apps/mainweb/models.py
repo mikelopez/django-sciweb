@@ -110,7 +110,6 @@ class ShopCategory(models.Model):
     """
     name = models.CharField(max_length=40)
     shop_id = models.CharField(max_length=15)
-    def save(self):
-        super(ShopCategory, self).save(*args, **kwargs)
+    
 
 
