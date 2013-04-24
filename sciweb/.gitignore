@@ -4,3 +4,4 @@
 static/domains*
 local_settings.py
 *local_settings*
+*.swp*
