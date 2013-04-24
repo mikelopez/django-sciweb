@@ -32,7 +32,7 @@ def shopzilla_search(pubtoken, token, search_for, debug=False, debug_filename=No
     and debug_filename specifies which debug file to write
     """ 
     data = {'apiKey': token, 'publisherId': pubtoken, 'keyword': search_for,\
-        'resultsOffers': 3, 'productId': '', 'results': '250'}
+        'resultsOffers': 3, 'productId': '', 'results': '50'}
 
     # to do - sanitize sarch_string 
     shop = ShopzillaAPI(**data)
@@ -60,7 +60,26 @@ def shopzilla_search(pubtoken, token, search_for, debug=False, debug_filename=No
         except KeyError:
             pass 
         counter += 1
-    return affiliated_products
+
+    # now get categories
+    cdata = {'apiKey': token, 'publisherId': pubtoken, 'keyword': search_for,\
+        'results': '50', 'categoryId': '1'}
+    
+    # to do - sanitize sarch_string 
+    cshop = ShopzillaTaxonomyAPI(**cdata)
+    
+    cshop.read_response(debug=True, debug_filename=debug_filename)
+    try: 
+        cshop.parse_json()
+    except:
+        cshop.json_data = cshop.response_data
+
+    categories = cshop.json_data
+    #cats = categories.get('taxonomy').get('categories').get('category')[0].get('children').get('category')
+    cats = categories.get('taxonomy').get('categories').get('category')
+    #print cats
+
+    return affiliated_products, cats
 
 def shopzilla_compare(pubtoken, token, search_for, debug=False, debug_filename=None):
     """
@@ -90,15 +109,38 @@ def shopzilla_compare(pubtoken, token, search_for, debug=False, debug_filename=N
         affiliated_products = {'products': {'product':[]} }
 
     counter = 0
-    for i in affiliated_products['products']['product']:
+    for i in affiliated_products.get('products').get('product'):
         offer_counter = 0
-        for offer in i['offers']['offer']:
+        for offer in i.get('offers').get('offer'):
             try:
                 affiliated_products['products']['product'][counter]['offers']['offer'][offer_counter]['short_name'] = str(i['title'][:130])
             except KeyError:
                 pass
             offer_counter += 1
         counter += 1
-    return affiliated_products
+
+    # now get categories
+    try:
+        cdata = {'apiKey': token, 'publisherId': pubtoken, \
+            'results': '50', 'keyword': affiliated_products.get('products').get('product')[0].get('title').replace('+',' ')}
+    except IndexError:
+        cdata = {'apiKey': token, 'publisherId': pubtoken, \
+            'results': '50', 'keyword': ''}
+    
+    # to do - sanitize sarch_string 
+    cshop = ShopzillaTaxonomyAPI(**cdata)
+    cshop.read_response(debug=True, debug_filename=debug_filename)
+    try: 
+        cshop.parse_json()
+    except:
+        cshop.json_data = cshop.response_data
+
+    categories = cshop.json_data
+    #cats = categories.get('taxonomy').get('categories').get('category')[0].get('children').get('category')
+    cats = categories.get('taxonomy').get('categories').get('category')
+    #print cats
+
+    return affiliated_products, cats
  
+
 

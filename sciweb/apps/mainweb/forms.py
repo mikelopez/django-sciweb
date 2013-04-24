@@ -44,7 +44,7 @@ class WebsitePageForm(forms.Form):
 
   """
   website = forms.ModelChoiceField(queryset=Website.objects.all(), required=False)
-  title = forms.CharField(max_length=30)
+  title = forms.CharField(max_length=50)
   name = forms.CharField(max_length=20)
   type = forms.ChoiceField(choices=WebsitePage.PAGETYPES)
   template = forms.CharField(max_length=50)

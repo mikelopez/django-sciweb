@@ -64,6 +64,7 @@ class PageProcessor(object):
 
     shopzilla_products = None
     shopzilla_categories = ShopCategory.objects.all()
+    shopzilla_subcategories = []
 
     logger = LoggerLog(log=LOG_ON, loggerlog=logging.getLogger('mainweb.process_page'))
 
@@ -93,7 +94,8 @@ class PageProcessor(object):
             'domain': None,
             'pagetype': None,
             'shopzilla_products': None,
-            'shopzilla_categories': None
+            'shopzilla_categories': None,
+            'shopzilla_subcategories': None
         }
         for k, v in data.items():
             data[k] = getattr(self, k)
@@ -132,13 +134,13 @@ class PageProcessor(object):
             #self.static_arg_page()
             if self.linkname == SHOP_SEARCH:
                 self.logger.write('Searching shopzilla: %s' % self.filtername)
-                self.shopzilla_products = shopzilla_search(\
+                self.shopzilla_products, self.shopzilla_subcategories = shopzilla_search(\
                         SHOPZILLA_PUB_TOKEN, SHOPZILLA_TOKEN, self.filtername, \
                         debug=True, debug_filename=SHOPZILLA_OUTPUT_FILE)
 
             if self.linkname == SHOP_COMPARE:
                 self.logger.write('Searching shopzilla: %s' % self.filtername)
-                self.shopzilla_products = shopzilla_compare(\
+                self.shopzilla_products, self.shopzilla_subcategories = shopzilla_compare(\
                         SHOPZILLA_PUB_TOKEN, SHOPZILLA_TOKEN, self.filtername, \
                         debug=True, debug_filename=SHOPZILLA_OUTPUT_FILE)
 

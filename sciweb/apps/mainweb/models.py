@@ -56,7 +56,7 @@ class WebsitePage(models.Model):
     custom_blankfield['max_length']= 30
 
     website = models.ForeignKey('Website')
-    title = models.CharField(max_length=30, default='')
+    title = models.CharField(max_length=50, default='')
     name = models.CharField(max_length=20, default='index')
     type = models.CharField(max_length=15, choices=PAGETYPES, default='sub-landing')
     template = models.CharField(max_length=50, blank=True, null=True)
@@ -110,6 +110,6 @@ class ShopCategory(models.Model):
     """
     name = models.CharField(max_length=40)
     shop_id = models.CharField(max_length=15)
-    
+
 
 
