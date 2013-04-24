@@ -112,7 +112,7 @@ class PageProcessor(object):
         # parse and get the domain
         self.domain = self.get_domain()
         if not self.domain:
-            raise PageProcessorException('Domain returned None')      
+            raise PageProcessorException('Domain returned None')
         self.website = self.get_website()
 
         # check if index page or not, set to index if linkname is None
