@@ -7,7 +7,7 @@ Replace this with more appropriate tests for your application.
 
 import settings
 import logging
-import os
+from os import path
 
 from django.test import TestCase
 from lib.mainlogger import LoggerLog
@@ -57,5 +57,5 @@ class TestSettings(TestCase):
         for k in files_should_exist:
             dirs = '%s%s' % (settings.PROJECT_ROOTDIR, k)
             print 'Searching for %s ' % (dirs)
-            self.assertTrue(os.path.exists('%s' % (dirs)))
+            self.assertTrue(path.exists('%s' % (dirs)))
 
