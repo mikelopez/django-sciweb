@@ -26,7 +26,8 @@ class TestSettings(TestCase):
         """
         Very Basic test: Tests our log class
         """
-        l = ['PROJECT_ROOTDIR', 'DEV_INSTALLED_APPS', 'DEV_MIDDLEWARE_CLASSES', \
+        l = [
+            'PROJECT_ROOTDIR', 'DEV_INSTALLED_APPS', 'DEV_MIDDLEWARE_CLASSES', \
             'application_url_includes', 'mastersite_rooturl', 'STATIC_PAGES', \
             'STATIC_ARG_PAGES', 'SHOP_SEARCH', 'SHOP_COMPARE', 'SHOPZILLA_OUTPUT_FILE', \
             'SHOP_CATEGORY'
