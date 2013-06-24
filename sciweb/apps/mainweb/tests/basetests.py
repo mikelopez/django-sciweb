@@ -24,7 +24,7 @@ class BaseTestCase(TestCase):
 	def setUp(self):
 		""" Check the settings """
 		static_vars = [token, pubtoken, debug_filename, \
-			STATIC_PAGES, STATIC_ARG_PAGES]i
+			STATIC_PAGES, STATIC_ARG_PAGES]
 		[ self.assertTrue(i) for i in static_vars ]
 		
 	def tearDown(self):
