@@ -18,7 +18,7 @@ debug_filename = getattr(settings, 'SHOPZILLA_OUTPUT_FILE', '')
 STATIC_PAGES = getattr(settings, 'STATIC_PAGES', '')
 STATIC_ARG_PAGES = getattr(settings, 'STATIC_ARG_PAGES', '')
 
-class BaseTestClass(TestCase):
+class BaseTestCase(TestCase):
 	""" Base Test Class for Main Web Functions """
 
 	def setUp(self):

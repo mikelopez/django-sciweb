@@ -1,17 +1,16 @@
-import logging
-from django.test import TestCase
-from nose.tools import assert_true, assert_equals, assert_false
-from django.core.exceptions import ValidationError
+from mainweb.basetests import *
 from mainweb.models import Website, WebsitePage
-from settings import STATIC_PAGES, STATIC_ARG_PAGES
 from lib.mainlogger import LoggerLog
 
 
 class TestModelWebsite(TestCase):
     """
-    Test the basic model write/read capability
+    Test the basic model classes
+    Should have the following:
+     - Website
+     - WebsitePage
     """
-    tables = []
+    tables = [Website, WebsitePage]
     table_struct = []
 
     default_website = None
@@ -21,7 +20,6 @@ class TestModelWebsite(TestCase):
         """
         print "\nRunning Test mainweb.tests.test_model.TestModelWebsite\n\n"
 
-        self.tables = [Website, WebsitePage]
         d = {}
         [d.__setitem__(i.__name__, []) for i in self.tables]
         print '\n\ntable struct: %s' % d
