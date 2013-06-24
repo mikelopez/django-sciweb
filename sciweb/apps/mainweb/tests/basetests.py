@@ -9,17 +9,23 @@ from django.core.exceptions import ValidationError
 from mainweb.models import Website, WebsitePage
 from settings import STATIC_PAGES, STATIC_ARG_PAGES
 from lib.mainlogger import LoggerLog
-from pyshopzilla import *
 
 
+# Load settings stuff that we need
 token = getattr(settings, 'SHOPZILLA_TOKEN', '')
 pubtoken = getattr(settings, 'SHOPZILLA_PUB_TOKEN', '')
-debug_filename = getattr(settings, 'SHOPZILLA_OUTPUT_FILE')
+debug_filename = getattr(settings, 'SHOPZILLA_OUTPUT_FILE', '')
+STATIC_PAGES = getattr(settings, 'STATIC_PAGES', '')
+STATIC_ARG_PAGES = getattr(settings, 'STATIC_ARG_PAGES', '')
 
 class BaseTestClass(TestCase):
 	""" Base Test Class for Main Web Functions """
-	
+
 	def setUp(self):
-		pass
+		""" Check the settings """
+		static_vars = [token, pubtoken, debug_filename, \
+			STATIC_PAGES, STATIC_ARG_PAGES]i
+		[ self.assertTrue(i) for i in static_vars ]
+		
 	def tearDown(self):
 		pass

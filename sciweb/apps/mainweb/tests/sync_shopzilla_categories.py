@@ -1,24 +1,5 @@
-"""
-This file demonstrates writing tests using the unittest module. These will pass
-when you run "manage.py test".
-
-Replace this with more appropriate tests for your application.
-"""
-
-import settings
-import logging
-import os
-
-from django.test import TestCase
-from lib.mainlogger import LoggerLog
-from mainweb.models import ShopCategory
 from pyshopzilla import *
-
-from django.conf import settings
-
-token = getattr(settings, 'SHOPZILLA_TOKEN', '')
-pubtoken = getattr(settings, 'SHOPZILLA_PUB_TOKEN', '')
-debug_filename = getattr(settings, 'SHOPZILLA_OUTPUT_FILE')
+from mainweb.basetests import *
 
 class TestShopzilla(TestCase):
     """
