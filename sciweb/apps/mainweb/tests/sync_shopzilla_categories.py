@@ -1,15 +1,10 @@
 from pyshopzilla import *
-from mainweb.basetests import *
+from mainweb.tests.basetests import *
 
-class TestShopzilla(TestCase):
+class TestShopzilla(BaseTestCase):
     """
-    Make sure the settings file contains the data needed
+    Test pyshopzilla 
     """
-    def setUp(self):
-        pass
-
-    def tearDown(self):
-        pass
 
     def test_products(self):
         """
