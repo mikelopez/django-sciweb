@@ -38,7 +38,10 @@ You can copy paste this code into your local_settings.py if you are lazy::
     if ENABLE_ADMIN:
       application_url_includes = patterns('',
         #(r'^admin/(.*)', admin.site.root),
-        #(r'^custom/admin/dir/(.*)', include('webadmin.urls')), 
+        url(r'^webadmin/(?P<model>\w+)/(?P<action>\w+)/(?P<id>\w+)$','crudstuff.views.index'),
+        url(r'^webadmin/(?P<model>\w+)/(?P<action>\w+)$','crudstuff.views.index'),
+        url(r'^webadmin/(?P<model>\w+)$','crudstuff.views.index' ),
+        url(r'^webadmin$', 'crudstuff.views.index', name='crudstuff_index'), 
       )
     else:
       application_url_includes = patterns('',)
