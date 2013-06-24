@@ -1,8 +1,10 @@
+import logging
 from django.test import TestCase
 from nose.tools import assert_true, assert_equals, assert_false
 from django.core.exceptions import ValidationError
 from mainweb.models import Website, WebsitePage
 from settings import STATIC_PAGES, STATIC_ARG_PAGES
+from lib.mainlogger import LoggerLog
 
 
 class TestModelWebsite(TestCase):

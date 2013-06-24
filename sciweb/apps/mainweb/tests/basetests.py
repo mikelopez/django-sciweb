@@ -17,7 +17,8 @@ pubtoken = getattr(settings, 'SHOPZILLA_PUB_TOKEN', '')
 debug_filename = getattr(settings, 'SHOPZILLA_OUTPUT_FILE')
 
 class BaseTestClass(TestCase):
-
+	""" Base Test Class for Main Web Functions """
+	
 	def setUp(self):
 		pass
 	def tearDown(self):

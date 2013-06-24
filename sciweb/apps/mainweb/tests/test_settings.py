@@ -24,7 +24,7 @@ class TestSettings(TestCase):
 
     def test_defaults(self):
         """
-        Very Basic test: Tests our log class
+        Very Basic test for settings variables
         """
         l = [
             'PROJECT_ROOTDIR', 'DEV_INSTALLED_APPS', 'DEV_MIDDLEWARE_CLASSES', \
