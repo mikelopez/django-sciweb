@@ -6,15 +6,15 @@ admin.autodiscover()
 
 from settings import ENABLE_ADMIN, PROJECT_ROOTDIR
 from django.contrib.auth.views import login, logout
-print PROJECT_ROOTDIR
-    # turn off admin !
+
 urlpatterns = patterns('',
     (r'src/(?P<path>.*)$', 'django.views.static.serve', {'document_root':'%s/static/' % (PROJECT_ROOTDIR), 'show_indexes': True}),
     (r'logout', logout),
     (r'accounts/login/$', login),
     (r'login/$', login),
-)
 
+    (r'^mainweb/', include('mainweb.urls')),
+)
 
 try:
     from settings import mastersite_rooturl as rooturl, \
