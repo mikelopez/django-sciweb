@@ -73,16 +73,3 @@ class WebsitePageForm(forms.Form):
       obj.save()
 
 
-class ShopCategoryForm(forms.Form):
-  """
-  Form for ShopCategory model 
-  """
-  name = forms.CharField(max_length=40)
-  shop_id = forms.CharField(max_length=15)
-  def clean(self):
-    return self.cleaned_data
-  def update(self, obj):
-    for k, v in self.cleaned_data.items():
-      setattr(obj, k, v)
-    obj.save()
-
