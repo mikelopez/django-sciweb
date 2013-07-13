@@ -1,0 +1,18 @@
+{% extends "mainweb/mainweb-base.html" %}
+
+
+{% block heading %}Website: {{object.domain}}{% endblock %}
+
+
+{% block detail_view %}
+    Website: {{object.domain}}<hr />
+    Meta Keywords: {{object.meta_key}}<br />
+    Meta Description: {{object.meta_desc}}<hr />
+
+{% endblock %}
+
+{% block action_button %}
+    <input type="button" class="btn btn-info pull-right" value="Back to Websites" 
+                onclick="window.location='{% url 'website-view' %}';"/>
+{% endblock %}
+

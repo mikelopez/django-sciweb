@@ -8,7 +8,7 @@
     <tr><td>Domain</td><td>Meta Keywords</td><td>Meta Description</td></tr>
     {% for i in object_list %}
     <tr>
-      <td>{{ i.domain }} </td>
+      <td><a href="/mainweb/website/{{i.id}}">{{ i.domain }}</a> </td>
       <td>{{ i.meta_key }} </td>
       <td>{{ i.meta_desc }}</td>
     </tr>
