@@ -4,7 +4,7 @@
 {% block heading %}Add a Website{% endblock %}
 
 
-{% block form_submit_to %}{% url "website_add" %}{% endblock %}
+{% block form_submit_to %}{% url "website-add" %}{% endblock %}
 {% block add_website_form %}
     <table width="650">
       {{form.as_table}}
@@ -14,5 +14,5 @@
 
 {% block action_button %}
     <input type="button" class="btn btn-info pull-right" value="View Websites" 
-                onclick="window.location='{% url 'website_view' %}';"/>
+                onclick="window.location='{% url 'website-view' %}';"/>
 {% endblock %}

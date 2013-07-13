@@ -21,10 +21,10 @@ urlpatterns = patterns('',
     # url(r'^admin/', include(admin.site.urls)),
     url(r'^$', AdminIndexView.as_view(), name="adminview"),
 
-    url(r'^website/add', CreateWebsite.as_view(), name="website_add"),
-    url(r'^website/update', UpdateWebsite.as_view(), name="website_update"),
-    url(r'^website/', WebsiteView.as_view(), name="website_view"),
-    url(r'^website/(?P<pk>\d+)/$', WebsiteDetailView.as_view(), name="website_detail"),
+    url(r'^website/add', CreateWebsite.as_view(), name="website-add"),
+    url(r'^website/update', UpdateWebsite.as_view(), name="website-update"),
+    url(r'^website/', WebsiteView.as_view(), name="website-view"),
+    url(r'^website/(?P<pk>\d+)/$', WebsiteDetailView.as_view(), name="website-detail"),
     
 
     #(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root':'%s/static/' % (PROJECT_ROOTDIR), 'show_indexes': True}),
