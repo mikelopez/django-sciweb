@@ -25,6 +25,7 @@
             .margintop80 { margin-top:80px;}
         </style>
         {% endblock %}
+        {% block additional_css_overrides %}{% endblock %}
   </head>
     <body>
 
@@ -76,6 +77,7 @@
             </div><!-- /navbar-inner -->
           </div>
 
+         
 
         <div class="container margintop80">
             <h1 class="pull-left">
@@ -99,6 +101,8 @@
 
             {% block detail_view %}
             {% endblock %}
+
+            {% block login_form %}{% endblock %}
 
         </div>
   </body>
