@@ -21,3 +21,8 @@ def index(request, linkname=None, filtername=None):
         loggerlog.write('Using default template index.html')
         return render(request, 'mainweb/index.html', page.context())
 
+def robots(request):
+    """ 
+    Return robots response
+    """
+    return HttpResponse('User-agent: *', mimetype="text/plain")

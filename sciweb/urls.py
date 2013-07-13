@@ -12,8 +12,8 @@ urlpatterns = patterns('',
     (r'logout', logout),
     (r'accounts/login/$', login),
     (r'login/$', login),
-
     (r'^mainweb/', include('mainweb.urls')),
+    (r'^xxxgalleries/', include('xxxgalleries.urls')),
 )
 
 try:

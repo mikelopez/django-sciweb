@@ -18,7 +18,7 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     # url(r'^admin/', include(admin.site.urls)),
-    url(r'^admin/', AdminIndexView.as_view(), name="admin-view"),
+    url(r'^$', AdminIndexView.as_view(), name="admin-view"),
 
     #url(r'^dynamic/(?P<model_name>.*)/add', AddSomething.as_view(), name="dynamic-crud"),
 
