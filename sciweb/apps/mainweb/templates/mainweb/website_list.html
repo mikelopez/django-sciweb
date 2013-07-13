@@ -1,0 +1,24 @@
+{% extends "mainweb/mainweb-base.html" %}
+
+{% block heading %}Websites{% endblock %}
+
+{% block table_list %}
+
+  <table class="table table-bordered" style="width:100%;">
+    <tr><td>Domain</td><td>Meta Keywords</td><td>Meta Description</td></tr>
+    {% for i in object_list %}
+    <tr>
+      <td>{{ i.domain }} </td>
+      <td>{{ i.meta_key }} </td>
+      <td>{{ i.meta_desc }}</td>
+    </tr>
+    {% endfor %}
+   </table>
+
+ {% endblock %}
+
+
+ {% block action_button %}
+    <input type="button" class="btn btn-info pull-right" value="Add Website" 
+                onclick="window.location='{% url 'website_add' %}';"/>
+{% endblock %}

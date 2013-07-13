@@ -1,7 +1,8 @@
 from django.conf.urls import patterns, include, url
 from django.conf import settings
 from django.views.generic import TemplateView, ListView, DetailView, CreateView
-from mainweb.views import AdminIndexView
+from mainweb.views import AdminIndexView, \
+        CreateWebsite, UpdateWebsite, WebsiteView, WebsiteDetailView
         
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
@@ -18,14 +19,12 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     # url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', AdminIndexView.as_view(), name="admin-view"),
+    url(r'^$', AdminIndexView.as_view(), name="adminview"),
 
-    #url(r'^dynamic/(?P<model_name>.*)/add', AddSomething.as_view(), name="dynamic-crud"),
-
-    #url(r'^gallery/add', CreateGallery.as_view(), name="galleries-add"),
-    #url(r'^gallery/update', UpdateGallery.as_view(), name="galleries-update"),
-    #url(r'^gallery/', GalleryView.as_view(), name="galleries-view"),
-    #url(r'^galleries/(?P<pk>\d+)/$', GalleryDetailView.as_view(), name="gallery-detail"),
+    url(r'^website/add', CreateWebsite.as_view(), name="website_add"),
+    url(r'^website/update', UpdateWebsite.as_view(), name="website_update"),
+    url(r'^website/', WebsiteView.as_view(), name="website_view"),
+    url(r'^website/(?P<pk>\d+)/$', WebsiteDetailView.as_view(), name="website_detail"),
     
 
     #(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root':'%s/static/' % (PROJECT_ROOTDIR), 'show_indexes': True}),
