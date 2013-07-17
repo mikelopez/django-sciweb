@@ -11,13 +11,18 @@ Getting Started
 --------------
 
 * Create your local_settings.py file
+``$ cp local_settings.template local_settings.py``
+
+* Complete database configuration in settings, and Build out the databases
+  ``$ python manage.py syncdb``
+
 * Start the server
 
-``cp local_settings.template local_settings.py``
+``$ mkvirtualenv sciweb``
 
-``mkvirtualenv sciweb``
+``$ pip install -r requirements.txt``
 
-``pip install -r requirements.txt``
+``$ python manage.py runserver 127.0.0.1:8000``
 
 
 local_settings.py
