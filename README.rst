@@ -5,7 +5,7 @@ Uses Shopzilla publisher services for product & price comparison
 You can also create custom landing pages on specific products
 Add your own products or implement your own apps
 
-http://django-sciweb.readthedocs.org
+Read More: http://django-sciweb.readthedocs.org
 
 Getting Started
 --------------
