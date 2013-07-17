@@ -14,7 +14,9 @@ Getting Started
 * Start the server
 
 ``cp local_settings.template local_settings.py``
+
 ``mkvirtualenv sciweb``
+
 ``pip install -r requirements.txt``
 
 
