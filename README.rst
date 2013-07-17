@@ -12,6 +12,7 @@ Getting Started
 
 * Create your local_settings.py file
 * Start the server
+
 .. code-block:: shell
     cp local_settings.template local_settings.py
     mkvirtualenv sciweb
@@ -19,9 +20,8 @@ Getting Started
 
 
  ''local_settings.py''
- .. code-block:: python
+.. code-block:: python
  
-
     from django.conf.urls.defaults import *
     # Uncomment the next two lines to enable the admin:
 
