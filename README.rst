@@ -10,14 +10,16 @@ http://django-sciweb.readthedocs.org
 Getting Started
 --------------
 
-* Create your local_settings.py file
+Create local_settings.py file
+=============================
 ``$ cp local_settings.template local_settings.py``
 
-* Complete database configuration in settings, and Build out the databases
-  ``$ python manage.py syncdb``
+Build out the database
+======================
+``$ python manage.py syncdb``
 
-* Start the server
-
+Install requirements and Start the server
+==========================================
 ``$ mkvirtualenv sciweb``
 
 ``$ pip install -r requirements.txt``
