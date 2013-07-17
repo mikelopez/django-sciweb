@@ -13,7 +13,7 @@ Getting Started
 * Create your local_settings.py file
 * Start the server
 
-.. code-block:: bash
+::
     cp local_settings.template local_settings.py
     mkvirtualenv sciweb
     pip install -r requirements.txt
