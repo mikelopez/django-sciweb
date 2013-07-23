@@ -12,4 +12,5 @@ wsgiref==0.1.2
 
 git+git://github.com/mikelopez/termprint
 git+git://github.com/mikelopez/pyshopzilla
+git+git://github.com/mikelopez/rawdogger
 
