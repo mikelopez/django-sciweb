@@ -19,6 +19,9 @@ class Website(models.Model):
     def __unicode__(self):
         return self.domain
 
+    def get_absolute_url(self):
+        return reverse('website-detail', kwargs={'pk': self.pk})
+
     def get_index_page(self):
         """ get the index page """
         try:
@@ -66,8 +69,13 @@ class WebsitePage(models.Model):
 
     def __str__(self):
         return str("%s / %s" % (self.website.domain, self.name))
+
     def __unicode__(self):
         return unicode("%s / %s" % (self.website.domain, self.name))
+
+    #def get_absolute_url(self):
+        #return reverse('gallery-detail', kwargs={'pk': self.pk})
+
     def save(self, *args, **kwargs):
         """ 
         Parse the name and save 
