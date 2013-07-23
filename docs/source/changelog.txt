@@ -10,6 +10,7 @@ v1.0 2013-07-22
 * Main App 'mainweb' admin html pages
 * Implemented class views crud
 * Main App 'mainweb' more pluggable now
+* Removed local settings URL for crud pages, using default urls.
 
 
 
