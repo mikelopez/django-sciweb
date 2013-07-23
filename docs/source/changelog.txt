@@ -3,6 +3,7 @@ Changelog
 
 v1.0 2013-07-22
 ----------------
+* Version bump
 * Django1.5 support
 * Implemented staticfiles use for static media
 * Some refactors
