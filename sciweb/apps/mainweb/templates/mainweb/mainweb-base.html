@@ -93,6 +93,7 @@
 
             <form action="{% block form_submit_to %}#{% endblock %}" method="POST"> {% csrf_token %}
                 {% block add_website_form %} {% endblock %}
+                {% block add_websitepage_form %}{% endblock %}
             </form>
 
             {% block table_list %}
