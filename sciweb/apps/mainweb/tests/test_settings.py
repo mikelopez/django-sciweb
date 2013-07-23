@@ -37,7 +37,7 @@ class TestSettings(TestCase):
             self.assertTrue(getattr(settings, k))
 
 
-    def test_directories(self):
+    def test_static_directories(self):
         """
         Test for directories that should exist
         """
