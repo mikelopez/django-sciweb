@@ -73,12 +73,10 @@ Linked Media Subdirectories
 
 Similar to the templates directory structure, we have a default directory ``sciweb/static``
 This directory is set with MEDIA_URL of /src/ (This can be overrided in local_settings.py)
+You can now use staticfiles ``{% static '/bootstrap/css/bootstrap.css' %}`` to use the default bootstrap.css file
 
-The user can now use staticfiles ``{% /bootstrap/css/bootstrap.css`` to use the default bootstrap.css file
 
-
-.. note ::
-As of 1.0 it now uses staticfiles which makes use of settings.STATICFILES_DIRS
+.. note :: As of 1.0 it now uses staticfiles which makes use of settings.STATICFILES_DIRS
 
 
 
