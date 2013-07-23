@@ -84,7 +84,8 @@ SHOP_CATEGORY = 'shopcategory'
 # static pages are fixed page types to display products, articles, or anything else
 STATIC_PAGES = ['products', 'articles' ]
 
-# define static pages that require an arg
+# uses a specific static page to define its behavior, and requires an argument in the url. 
+# for example, a 'products' static page with argument would be 'p' STATIC_ARG_PAGE
 STATIC_ARG_PAGES = ['p', 'search', 'a', SHOP_SEARCH, SHOP_COMPARE, SHOP_CATEGORY]
 
 # optional if using django-debug-toolbar
