@@ -1,0 +1,17 @@
+{% extends "mainweb/mainweb-base.html" %}
+
+{% block title %}Website Page {{object.domain}}{% endblock %}
+{% block heading %}Website Page: {{object.domain}}{% endblock %}
+
+
+{% block detail_view %}
+    Website Page: {{object.domain}}<hr />
+ 
+
+{% endblock %}
+
+{% block action_button %}
+    <input type="button" class="btn btn-info pull-right" value="Back to Website Pages" 
+                onclick="window.location='{% url 'websitepage-view' %}';"/>
+{% endblock %}
+
