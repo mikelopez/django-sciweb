@@ -7,29 +7,30 @@ When creating a custom domain folder, each subdirectory of that should be a dire
 By default, it will search for domains/ folder, with the subdirectory named as the website (site123.com) and the requested template filename. If that is not found, it will search through the parent directory of domains/ (apps/mainweb/templates/index.html) for the index.html file or the template filename associated with the WebsitePage()
 
 Example Directory Structure example::
-    - sciweb/
-          apps/
-             mainweb/
-                  templates/
-                        show_product.html
-                        index.html
-                        show_article.html
-                        search.html
-                        products.html
-                        articles.html
-                        domains/
-                               sitename.com/
-                                     index.html
-                                     search.html
-                                     .....
-                               domain-cool.com/
-                                     index.html
-                                     search.html
-                                     .....
-                               hot-a55-orgy.com/
-                                     index.html
-                                     search.html
-                                     .....
+
+  sciweb/
+      apps/
+          mainweb/
+               templates/
+                    show_product.html
+                    index.html
+                    show_article.html
+                    search.html
+                    products.html
+                    articles.html
+                    domains/
+                         sitename.com/
+                               index.html
+                               search.html
+                               .....
+                         domain-cool.com/
+                               index.html
+                               search.html
+                               .....
+                         hot-a55-orgy.com/
+                               index.html
+                               search.html
+                               .....
 
 
 
