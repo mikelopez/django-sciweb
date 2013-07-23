@@ -1,6 +1,17 @@
 Changelog
 =========
 
+v1.0 2013-07-22
+----------------
+* Django1.5 support
+* Implemented staticfiles use for static media
+* Some refactors
+* Removed crudstuff 
+* Main App 'mainweb' admin html pages
+* Implemented class views crud
+* Main App 'mainweb' more pluggable now
+
+
 
 v0.9.4 2013-03-04
 ------------------
