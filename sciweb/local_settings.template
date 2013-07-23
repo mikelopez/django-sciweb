@@ -35,20 +35,11 @@ DEV_MIDDLEWARE_CLASSES = (
 # enable or disable admins - uncomment and modify with your url
 if ENABLE_ADMIN:
   application_url_includes = patterns('',
-    #(r'^admin/(.*)', admin.site.root),
+    #(r'^(?P<linkname>\w+)','mainweb.views.index'),
   )
 else:
   application_url_includes = patterns('',)
 
-
-# choose the view for the root URL /
-mastersite_rooturl = patterns('',
-  #url(r'^$', 'web.views.admin_redirect'),
-  url(r'^robots.txt','mainweb.views.robots'),
-  url(r'^$', 'mainweb.views.index', name="mainweb_index"),
-  url(r'^(?P<linkname>\w+)/(?P<filtername>[\w -]+)', 'mainweb.views.index'),
-  url(r'^(?P<linkname>\w+)','mainweb.views.index'),
-)
 
 # assuming mysql db - assuming django.db.backends.mysql
 DATABASES = {
@@ -75,13 +66,24 @@ DATABASE_PASSWORD = DATABASES.get('default').get('PASSWORD')
 DATABASE_HOST = DATABASES.get('default').get('HOST')
 DATABASE_PORT = ''
 
-# dynamic shopzilla query pages (search, compare, category view
+
+# Shopzilla publisher tokens from your account
+SHOPZILLA_TOKEN = 'apiapiapiapiapiapiapifuckyouapiapiapiapiapiapi'
+SHOPZILLA_PUB_TOKEN = '99999'
+# Shopzilla output log file (separate from project directory)
+SHOPZILLA_OUTPUT_FILE = ''
+
+# SHOPILLA - dynamic shopzilla query pages (search, compare, category view
 SHOP_SEARCH = 'shopsearch'
 SHOP_COMPARE = 'shopcompare'
 SHOP_CATEGORY = 'shopcategory'
 
+
+
 # define the static page names that will be used in the URL
+# static pages are fixed page types to display products, articles, or anything else
 STATIC_PAGES = ['products', 'articles' ]
+
 # define static pages that require an arg
 STATIC_ARG_PAGES = ['p', 'search', 'a', SHOP_SEARCH, SHOP_COMPARE, SHOP_CATEGORY]
 
@@ -98,11 +100,6 @@ DEBUG_TOOLBAR_PANELS = (
     'debug_toolbar.panels.logger.LoggingPanel',
 )
 
-# Shopzilla publisher tokens from your account
-SHOPZILLA_TOKEN = 'apiapiapiapiapiapiapifuckyouapiapiapiapiapiapi'
-SHOPZILLA_PUB_TOKEN = '99999'
 
-# Shopzilla output log file (separate from project directory)
-SHOPZILLA_OUTPUT_FILE = ''
 
 
