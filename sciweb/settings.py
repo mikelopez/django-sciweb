@@ -68,6 +68,8 @@ STATIC_ROOT = ''
 # Example: "http://media.lawrence.com/static/"
 STATIC_URL = '/static/'
 
+# Make this unique, and don't share it with anybody.
+SECRET_KEY = 'd@vj2zhb1)i29&amp;+l+!^!lnema%5^kao7m5(hvv#7@fx35j3#!7'
 
 from local_settings import *
 try:
@@ -92,9 +94,6 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
-
-# Make this unique, and don't share it with anybody.
-SECRET_KEY = 'd@vj2zhb1)i29&amp;+l+!^!lnema%5^kao7m5(hvv#7@fx35j3#!7'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
