@@ -14,6 +14,8 @@ class AdminIndexView(TemplateView):
     """ Index Page View """
     template_name = "mainweb/admin-index.html"
 
+
+# Websites
 class WebsiteView(ListView):
     """ Website List Page View """
     model = Website
@@ -32,3 +34,25 @@ class WebsiteDetailView(DetailView):
     def get_object(self, **kwargs):
         object = super(WebsiteDetailView, self).get_object(**kwargs)
         return object
+
+
+# Website Pages
+class WebsitePageView(ListView):
+    """ Website List Page View """
+    model = Website
+
+class CreateWebsitePage(CreateView):
+    """ Create Website page view """
+    model = WebsitePage
+
+class UpdateWebsite(UpdateView):
+    """ Update view """
+    model = WebsitePage
+    
+class WebsitePageDetailView(DetailView):
+    """ Website Detail Page View """
+    queryset = WebsitePage.objects.all()
+    def get_object(self, **kwargs):
+        object = super(WebsitePageDetailView, self).get_object(**kwargs)
+        return object
+
