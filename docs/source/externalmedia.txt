@@ -2,9 +2,12 @@ External Media & Templates
 ======================================
 
 Here we will configure our templates, css/javascript & images directories. 
-Comes with Twitter Bootstrap for default CSS & JS
-When creating a custom domain folder, each subdirectory of that should be a directory named as the site stripped of all prefixes. 
-By default, it will search for domains/ folder, with the subdirectory named as the website (site123.com) and the requested template filename. If that is not found, it will search through the parent directory of domains/ (apps/mainweb/templates/index.html) for the index.html file or the template filename associated with the WebsitePage()
+
+Includes Twitter Bootstrap for the default CSS & JS. 
+
+When creating a custom domain folder, each subdirectory of that should be a directory named as the site stripped of all prefixes.
+
+By default, it will search for domains/ folder, with the subdirectory named as the website (site123.com) and the requested template filename from the WebsitePage() table. If that is not found, it will search through the parent directory of domains/ (apps/mainweb/templates/index.html) for the template filename associated with the WebsitePage()
 
 Example Directory Structure example::
 
@@ -51,9 +54,7 @@ By default, there is a set of templates located inside ``sciweb/apps/mainweb/tem
 
 These templates are used if there is no subdirectory ``domains`` inside of ``sciweb/apps/mainweb/templates``
 
-NOTE: Templates inside the subdirectories must contain the same naming as the default templates.
-so if you are accessing domain.com, and we have sciweb/apps/mainweb/templates/domains/domain.com/index.html, we will
-serve that file, otherwise, we serve the default sciweb/apps/mainweb/templates/index.html
+.. note:: Templates inside the subdirectories must contain the same naming as the default templates. so if you are accessing domain.com, and we have sciweb/apps/mainweb/templates/domains/domain.com/index.html, we will serve that file, otherwise, we serve the default sciweb/apps/mainweb/templates/index.html
 
 
 Default Template Filenames
