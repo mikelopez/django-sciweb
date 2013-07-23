@@ -5,4 +5,4 @@ if [ -z "$1" ]; then
     exit 
 fi
 
-epydoc -v -v -v --html --output=$1 --inheritance=listed --css=white --graph=all .
+epydoc -v -v -v --html --output=$1 --inheritance=listed --css=white --graph=all sciweb
