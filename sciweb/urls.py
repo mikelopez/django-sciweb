@@ -13,6 +13,7 @@ urlpatterns = patterns('',
     (r'accounts/login/$', login),
     (r'login/$', login),
 
+    # app urls
     (r'mainweb/', include('mainweb.urls')),
     (r'xxxgalleries/', include('xxxgalleries.urls')),
 
