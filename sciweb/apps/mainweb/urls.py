@@ -27,10 +27,10 @@ urlpatterns = patterns('',
     url(r'^website/(?P<pk>\d+)', WebsiteDetailView.as_view(), name="website-detail"),
     url(r'^website/', WebsiteView.as_view(), name="website-view"),
 
-    url(r'^websitepage/add', CreateWebsitePage.as_view(), name="websitepage-add"),
-    url(r'^websitepage/update', UpdateWebsitePage.as_view(), name="websitepage-update"),
-    url(r'^websitepage/(?P<pk>\d+)', WebsitePageDetailView.as_view(), name="websitepage-detail"),
-    url(r'^websitepage/', WebsitePageView.as_view(), name="websitepage-view"),
+    url(r'^sitepage/add', CreateWebsitePage.as_view(), name="websitepage-add"),
+    url(r'^sitepage/update', UpdateWebsitePage.as_view(), name="websitepage-update"),
+    url(r'^sitepage/(?P<pk>\d+)', WebsitePageDetailView.as_view(), name="websitepage-detail"),
+    url(r'^sitepage/', WebsitePageView.as_view(), name="websitepage-view"),
     
 
     #(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root':'%s/static/' % (PROJECT_ROOTDIR), 'show_indexes': True}),

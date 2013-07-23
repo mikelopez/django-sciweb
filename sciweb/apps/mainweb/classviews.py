@@ -39,7 +39,7 @@ class WebsiteDetailView(DetailView):
 # Website Pages
 class WebsitePageView(ListView):
     """ Website List Page View """
-    model = Website
+    model = WebsitePage
 
 class CreateWebsitePage(CreateView):
     """ Create Website page view """
