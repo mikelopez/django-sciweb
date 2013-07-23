@@ -5,7 +5,7 @@ Here we will configure our templates, css/javascript & images directories.
 Comes with Twitter Bootstrap for default CSS & JS
 
 
-1) Place a symlink in sciweb/templates/domains containing any HTML templates or you can create the directory as well. Must be called "domains"
+* Place a symlink in sciweb/apps/mainweb/templates/ called "domains" that points to any other directories that contain any HTML templates or you can create the directory as well as a local folder to the project. Must be called "domains"
 
 ``ln -s /directory/for/your/templates sciweb/templates/domains``
 
@@ -14,27 +14,16 @@ Comes with Twitter Bootstrap for default CSS & JS
 ``ln -s /directory/for/your/templates/static/ sciweb/static/domains``
 
 
-Crudstuff Templates
-===================
-These are the templates that are served by default with the crud admin. 
-- crud-index.html
-
-
-Overriding Default Admin templates
-=================================
-TODO!
-
-
 Website Default and Sub Templates
 ==================================
 
-By default, there is a set of templates located inside ``sciweb/templates/`` 
+By default, there is a set of templates located inside ``sciweb/apps/mainweb/templates/`` 
 
-These templates are used if there is no subdirectory ``domains`` inside of ``sciweb/templates``
+These templates are used if there is no subdirectory ``domains`` inside of ``sciweb/apps/mainweb/templates``
 
 NOTE: Templates inside the subdirectories must contain the same naming as the default templates.
-so if you are accessing domain.com, and we have sciweb/templates/domains/domain.com/index.html, we will
-serve that file, otherwise, we serve the default sciweb/templates/index.html
+so if you are accessing domain.com, and we have sciweb/apps/mainweb/templates/domains/domain.com/index.html, we will
+serve that file, otherwise, we serve the default sciweb/apps/mainweb/templates/index.html
 
 
 Default Template Filenames
