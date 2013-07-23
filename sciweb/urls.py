@@ -12,7 +12,7 @@ urlpatterns = patterns('',
     (r'logout', logout),
     (r'accounts/login/$', login),
     (r'login/$', login),
-    """
+
     (r'^mainweb/', include('mainweb.urls')),
     (r'^xxxgalleries/', include('xxxgalleries.urls')),
 
@@ -20,14 +20,13 @@ urlpatterns = patterns('',
     (r'^robots.txt','mainweb.views.robots'),
     (r'^$', 'mainweb.views.index', name="mainweb_index"),
     (r'^(?P<linkname>\w+)/(?P<filtername>[\w -]+)', 'mainweb.views.index'),
-    (r'^(?P<linkname>\w+)','mainweb.views.index'),"""
+    (r'^(?P<linkname>\w+)','mainweb.views.index'),
 )
 
+# add any other custom urls from local_settings
 try:
-    from settings import mastersite_rooturl as rooturl, \
-        application_url_includes as appurls
+    from settings import application_url_includes as appurls
     urlpatterns += appurls
-    urlpatterns += rooturl
 
 except ImportError:
     pass
