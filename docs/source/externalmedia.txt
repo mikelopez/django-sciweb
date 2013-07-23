@@ -3,15 +3,44 @@ External Media & Templates
 
 Here we will configure our templates, css/javascript & images directories. 
 Comes with Twitter Bootstrap for default CSS & JS
+When creating a custom domain folder, each subdirectory of that should be a directory named as the site stripped of all prefixes. 
+By default, it will search for domains/ folder, with the subdirectory named as the website (site123.com) and the requested template filename. If that is not found, it will search through the parent directory of domains/ (apps/mainweb/templates/index.html) for the index.html file or the template filename associated with the WebsitePage()
+
+Example Directory Structure example::
+    - sciweb/
+          apps/
+             mainweb/
+                  templates/
+                        show_product.html
+                        index.html
+                        show_article.html
+                        search.html
+                        products.html
+                        articles.html
+                        domains/
+                               sitename.com/
+                                     index.html
+                                     search.html
+                                     .....
+                               domain-cool.com/
+                                     index.html
+                                     search.html
+                                     .....
+                               hot-a55-orgy.com/
+                                     index.html
+                                     search.html
+                                     .....
 
 
-* Place a symlink in sciweb/apps/mainweb/templates/ called "domains" that points to any other directories that contain any HTML templates or you can create the directory as well as a local folder to the project. Must be called "domains"
 
-``ln -s /directory/for/your/templates sciweb/templates/domains``
+Setting up the domains/ symlink 
+=================================
 
-2) (optional) Create a directory called sciweb/static/domains add to .gitignore (must be called domains)
+It is recommended to use a symlink for the domains "directory" to a directory outside of your project.
 
-``ln -s /directory/for/your/templates/static/ sciweb/static/domains``
+* Place a symlink in sciweb/apps/mainweb/templates/ called "domains" that points to any other directories that contain any HTML templates or you can create the directory as well as a local folder to the project. Must be called: domains ``ln -s /directory/for/your/templates sciweb/apps/mainweb/templates/domains``
+
+* Optional: Create a directory called sciweb/static/domains add to .gitignore (must be called domains) ``ln -s /directory/for/your/templates/static/ sciweb/static/domains``
 
 
 Website Default and Sub Templates
@@ -50,9 +79,6 @@ If it is found, then it is used and overrides the default bootstrap files that a
 
 The user can choose to use ``{{MEDIA_URL}}/bootstrap/css/bootstrap.css`` to use the default bootstrap.css file
 
-TODO: Need to set the context processor to create a default static media variable usable in all templates which contains 
-the link to the directory where media/template files are found. As of now, hardcoding the media urls into the HTML markup is required 
-to explicitly access a file
 
 
 
