@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.exceptions import ValidationError
 from settings import STATIC_PAGES, STATIC_ARG_PAGES
+from django.core.urlresolvers import reverse
 
 blankfield = {'blank': True, 'null': True}
 
