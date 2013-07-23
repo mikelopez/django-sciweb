@@ -2,7 +2,8 @@ from django.conf.urls import patterns, include, url
 from django.conf import settings
 from django.views.generic import TemplateView, ListView, DetailView, CreateView
 from mainweb.views import AdminIndexView, \
-        CreateWebsite, UpdateWebsite, WebsiteView, WebsiteDetailView
+        CreateWebsite, UpdateWebsite, WebsiteView, WebsiteDetailView, \
+        CreateWebsitePage, UpdateWebsitePage, WebsitePageView, WebsitePageDetailView
         
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin

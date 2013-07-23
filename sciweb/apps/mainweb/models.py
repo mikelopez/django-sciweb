@@ -74,8 +74,8 @@ class WebsitePage(models.Model):
     def __unicode__(self):
         return unicode("%s / %s" % (self.website.domain, self.name))
 
-    #def get_absolute_url(self):
-        #return reverse('gallery-detail', kwargs={'pk': self.pk})
+    def get_absolute_url(self):
+        return reverse('websitepage-detail', kwargs={'pk': self.pk})
 
     def save(self, *args, **kwargs):
         """ 

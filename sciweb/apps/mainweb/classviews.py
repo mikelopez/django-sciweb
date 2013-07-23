@@ -7,7 +7,7 @@ except ImportError:
     LOG_ON = False
 from lib.mainlogger import LoggerLog
 
-from models import Website
+from models import Website, WebsitePage
 #from forms import *
 
 class AdminIndexView(TemplateView):
@@ -45,7 +45,7 @@ class CreateWebsitePage(CreateView):
     """ Create Website page view """
     model = WebsitePage
 
-class UpdateWebsite(UpdateView):
+class UpdateWebsitePage(UpdateView):
     """ Update view """
     model = WebsitePage
     
