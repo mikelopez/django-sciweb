@@ -13,12 +13,12 @@ urlpatterns = patterns('',
     (r'accounts/login/$', login),
     (r'login/$', login),
 
-    (r'^mainweb/', include('mainweb.urls')),
-    (r'^xxxgalleries/', include('xxxgalleries.urls')),
+    (r'mainweb/', include('mainweb.urls')),
+    (r'xxxgalleries/', include('xxxgalleries.urls')),
 
     # defaults
-    (r'^robots.txt','mainweb.views.robots'),
-    (r'^$', 'mainweb.views.index', name="mainweb_index"),
+    url(r'^robots.txt', 'mainweb.views.robots', name="mainweb_robots"),
+    url(r'^$', 'mainweb.views.index', name="mainweb_index"),
     (r'^(?P<linkname>\w+)/(?P<filtername>[\w -]+)', 'mainweb.views.index'),
     (r'^(?P<linkname>\w+)','mainweb.views.index'),
 )
