@@ -1,12 +1,13 @@
 {% extends "mainweb/mainweb-base.html" %}
 
-{% block title %}Website Page {{object.domain}}{% endblock %}
-{% block heading %}Website Page: {{object.domain}}{% endblock %}
+{% block title %}Website Page {{object.title}}{% endblock %}
+{% block heading %}Website Page: {{object.title}}{% endblock %}
 
 
 {% block detail_view %}
-    Website Page: {{object.domain}}<hr />
- 
+    Website Page: {{object.title}}<hr />
+    Template: {{object.template}}<br /><br />\
+    Website: {{object.website}}<br />
 
 {% endblock %}
 
