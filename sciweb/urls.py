@@ -20,8 +20,8 @@ urlpatterns = patterns('',
     # defaults
     url(r'^robots.txt', 'mainweb.views.robots', name="mainweb_robots"),
     url(r'^$', 'mainweb.views.index', name="mainweb_index"),
-    (r'^(?P<linkname>\w+)/(?P<filtername>[\w -]+)', 'mainweb.views.index'),
-    (r'^(?P<linkname>\w+)','mainweb.views.index'),
+    (r'^(?P<linkname>[-\w]+)/(?P<filtername>[\w -]+)', 'mainweb.views.index'),
+    (r'^(?P<linkname>[-\w]+)','mainweb.views.index'),
 )
 
 # add any other custom urls from local_settings
