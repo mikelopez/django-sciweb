@@ -6,8 +6,10 @@
 
 {% block detail_view %}
     Website Page: {{object.title}}<hr />
-    Template: {{object.template}}<br /><br />\
-    Website: {{object.website}}<br />
+    Template: {{object.template}}<br /><br />
+    Website: {{object.website.domain}}<br />
+    URL: sitename.com/{{object.name}}
+
 
 {% endblock %}
 
