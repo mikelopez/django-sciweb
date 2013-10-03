@@ -1,1 +1,7 @@
+*.pyc
+*.DS_*
+*templates/domains*
+static/domains*
+local_settings.py
+*.swp*
 *.sqlite3*
