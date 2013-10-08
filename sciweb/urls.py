@@ -14,7 +14,7 @@ urlpatterns = patterns('',
     (r'login/$', login),
 
     # app urls
-    (r'mainweb/', include('mainweb.urls')),
+    #(r'mainweb/', include('mainweb.urls')),
     (r'xxxgalleries/', include('xxxgalleries.urls')),
 
     # defaults
