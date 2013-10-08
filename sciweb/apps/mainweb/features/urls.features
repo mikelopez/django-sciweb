@@ -1,5 +1,0 @@
-Feature: Testing page urls
-
-Scenario: Test Document upload Page forms
-    Given I access the "mainweb_index" page
-    
