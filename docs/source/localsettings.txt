@@ -4,9 +4,10 @@ Local Settings
 Local settings should be created to:
 
 - Set your database configuration
-- Allow support for multi-dev environments
-- Separate configuration for development/staging/production servers
-- Set admin-on / admin-off settings to open the admin pages 
+- Allow support for multiple-dev environments
+- Separate configuration for development/staging/production branches
+- Set admin on or off settings to open the admin pages 
+- Set the path to the custom templates to serve for specific sites
 
 
 
@@ -14,6 +15,8 @@ Local Settings Template
 =======================
 
 The git repository is provided with a template called local_settings.template
+
+
 
 Local Settings Code
 ====================
@@ -135,6 +138,9 @@ You can copy paste this code into your local_settings.py::
         'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
     )
+
+    # PATH to your templates without trailing slash
+    TEMPLATE_PATH = '/home/user/htmls'
 
 
 

@@ -11,6 +11,7 @@ ADMINS = (
 PROJECT_ROOTDIR = os.path.realpath(os.path.dirname(__file__))
 PROJECT_PATH = os.path.realpath(os.path.dirname(__file__))
 
+
 MANAGERS = ADMINS
 
 DATABASES = {
@@ -69,7 +70,10 @@ STATIC_URL = '/static/'
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'd@vj2zhb1)i29&amp;+l+!^!lnema%5^kao7m5(hvv#7@fx35j3#!7'
 
-from local_settings import *
+BOOTSTRAP_DIR = '%sbootstrap' % MEDIA_URL
+TEMPLATE_PATH = '~/htmls'
+
+
 try:
     from local_settings import *
 except ImportError:
@@ -83,6 +87,7 @@ STATICFILES_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
     "%s/static" % PROJECT_ROOTDIR,
+    "%s/static/domains" % TEMPLATE_PATH,
 )
 
 # List of finder classes that know how to find static files in
@@ -131,6 +136,7 @@ TEMPLATE_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
     #"%s/templates" % PROJECT_ROOTDIR,
+    TEMPLATE_PATH,
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = ("django.contrib.auth.context_processors.auth",
@@ -190,9 +196,7 @@ LOGGING = {
 
 #TEST_RUNNER = 'sciweb.testrunner.BaseAppsTestNoDb'
 
-BOOTSTRAP_DIR = '%sbootstrap' % MEDIA_URL
 
-TEMPLATE_PATH = '%s/apps/mainweb/templates/mainweb' % PROJECT_ROOTDIR
 
 
 

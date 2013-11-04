@@ -20,7 +20,7 @@ Build out the database
 
 Install requirements and Start the server
 ==========================================
-``$ mkvirtualenv sciweb``
+``$ virtualenv ~/dir/sciweb``
 
 ``$ pip install -r requirements.txt``
 
@@ -131,4 +131,5 @@ local_settings.py
         'debug_toolbar.panels.signals.SignalDebugPanel',
         'debug_toolbar.panels.logger.LoggingPanel',
     )
+    TEMPLATE_PATH = '/home/user/htmls'
 

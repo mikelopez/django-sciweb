@@ -4,17 +4,18 @@ from settings import PROJECT_ROOTDIR
 from django.contrib import admin
 admin.autodiscover()
 
-from settings import ENABLE_ADMIN, PROJECT_ROOTDIR
+from settings import ENABLE_ADMIN, PROJECT_ROOTDIR, TEMPLATE_PATH
 from django.contrib.auth.views import login, logout
 
 urlpatterns = patterns('',
     (r'src/(?P<path>.*)$', 'django.views.static.serve', {'document_root':'%s/static/' % (PROJECT_ROOTDIR), 'show_indexes': True}),
+    (r'rel/(?P<path>.*)$', 'django.views.static.serve', {'document_root':'%s/static/' % (TEMPLATE_PATH), 'show_indexes': True}),
     (r'logout', logout),
     (r'accounts/login/$', login),
     (r'login/$', login),
 
     # app urls
-    #(r'mainweb/', include('mainweb.urls')),
+    (r'mainweb/', include('mainweb.urls')),
     (r'xxxgalleries/', include('xxxgalleries.urls')),
 
     # defaults
