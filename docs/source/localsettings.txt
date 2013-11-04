@@ -17,6 +17,16 @@ Local Settings Template
 The git repository is provided with a template called local_settings.template
 
 
+Shopzilla Settings
+==================
+Be sure to look out for the following variables in your local_settings which control the
+search frequency and authentication keys for shopzilla queries.
+
+* SHOPZILLA_TOKEN = Your api key
+* SHOPZILLA_PUB_TOKEN = Your pub token from shopzilla
+* SHOPZILLA_SEARCH_FREQUENCY = how often to search
+* SHOPZILLA_OUTPUT_FILE = '/home/user/Desktop/jsondumps'
+
 
 Local Settings Code
 ====================
@@ -104,6 +114,11 @@ You can copy paste this code into your local_settings.py::
     SHOP_SEARCH = 'shopsearch'
     SHOP_COMPARE = 'shopcompare'
     SHOP_CATEGORY = 'shopcategory'
+    SHOPZILLA_TOKEN = 'your-shopzilla-token'
+    SHOPZILLA_PUB_TOKEN = 'your-pub-token'
+    # how often to search the remote api 
+    SHOPZILLA_SEARCH_FREQUENCY = 15
+    SHOPZILLA_OUTPUT_FILE = '/home/user/Desktop/jsondumps'
 
     # define the static page names that will be used in the URL
     STATIC_PAGES = ['products', 'articles' ]

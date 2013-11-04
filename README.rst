@@ -113,6 +113,13 @@ local_settings.py
     SHOP_SEARCH = 'shopsearch'
     SHOP_COMPARE = 'shopcompare'
     SHOP_CATEGORY = 'shopcategory'
+    SHOPZILLA_TOKEN = 'your-shopzilla-token'
+    SHOPZILLA_PUB_TOKEN = 'your-pub-token'
+    # how often to perform new searches
+    SHOPZILLA_SEARCH_FREQUENCY = 30
+
+    #SHOPZILLA_OUTPUT_FILE = '/Users/mikelopez/Desktop/jsondumps'
+    SHOPZILLA_OUTPUT_FILE = '/home/user/Desktop/jsondumps'
 
     # define the static page names that will be used in the URL
     STATIC_PAGES = ['products', 'articles' ]
