@@ -115,7 +115,7 @@ local_settings.py
     SHOP_CATEGORY = 'shopcategory'
     SHOPZILLA_TOKEN = 'your-shopzilla-token'
     SHOPZILLA_PUB_TOKEN = 'your-pub-token'
-    # how often to perform new searches
+    # how often to perform new searches (in minutes)
     SHOPZILLA_SEARCH_FREQUENCY = 30
 
     #SHOPZILLA_OUTPUT_FILE = '/Users/mikelopez/Desktop/jsondumps'

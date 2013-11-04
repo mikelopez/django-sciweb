@@ -24,7 +24,7 @@ search frequency and authentication keys for shopzilla queries.
 
 * SHOPZILLA_TOKEN = Your api key
 * SHOPZILLA_PUB_TOKEN = Your pub token from shopzilla
-* SHOPZILLA_SEARCH_FREQUENCY = how often to search
+* SHOPZILLA_SEARCH_FREQUENCY = how often to search in minutes
 * SHOPZILLA_OUTPUT_FILE = '/home/user/Desktop/jsondumps'
 
 
@@ -116,7 +116,7 @@ You can copy paste this code into your local_settings.py::
     SHOP_CATEGORY = 'shopcategory'
     SHOPZILLA_TOKEN = 'your-shopzilla-token'
     SHOPZILLA_PUB_TOKEN = 'your-pub-token'
-    # how often to search the remote api 
+    # how often to search the remote api (in minutes)
     SHOPZILLA_SEARCH_FREQUENCY = 15
     SHOPZILLA_OUTPUT_FILE = '/home/user/Desktop/jsondumps'
 
