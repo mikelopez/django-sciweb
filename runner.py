@@ -1,13 +1,16 @@
 import os, sys
 from django.conf import settings
+import sciweb.settings as sett
 
 PROJECT_ROOTDIR = os.path.realpath(os.path.dirname(__file__))
 PROJECT_PATH = os.path.realpath(os.path.dirname(__file__))
 sys.path.insert(0, os.path.join(PROJECT_PATH, ''))
+MEDIA_ROOT = sett.MEDIA_ROOT
 
 settings.configure(DEBUG=True,
                   PROJECT_ROOTDIR=PROJECT_ROOTDIR,
                   PROJECT_PATH=PROJECT_PATH,
+                  MEDIA_ROOT=MEDIA_ROOT,
                   DATABASES={
                         'default': {
                             'ENGINE': 'django.db.backends.sqlite3',

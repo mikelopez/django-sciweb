@@ -10,6 +10,7 @@ from django.contrib.auth.views import login, logout
 urlpatterns = patterns('',
     (r'src/(?P<path>.*)$', 'django.views.static.serve', {'document_root':'%s/static/' % (PROJECT_ROOTDIR), 'show_indexes': True}),
     (r'rel/(?P<path>.*)$', 'django.views.static.serve', {'document_root':'%s/static/' % (TEMPLATE_PATH), 'show_indexes': True}),
+    (r'media/(?P<path>.*)$', 'django.views.static.serve', {'document_root':'%s/media/' % (PROJECT_ROOTDIR), 'show_indexes': True}),
     (r'assets/ico/(?P<path>.*)$', 'django.views.static.serve', {'document_root':'%s/static/' % (TEMPLATE_PATH), 'show_indexes': True}),
     (r'logout', logout),
     (r'accounts/login/$', login),
