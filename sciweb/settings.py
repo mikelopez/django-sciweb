@@ -11,6 +11,9 @@ ADMINS = (
 PROJECT_ROOTDIR = os.path.realpath(os.path.dirname(__file__))
 PROJECT_PATH = os.path.realpath(os.path.dirname(__file__))
 
+# append directory for the apps
+sys.path.insert(0, os.path.join(PROJECT_PATH, ''))
+sys.path.insert(1, os.path.join(PROJECT_PATH, 'sciweb'))
 
 MANAGERS = ADMINS
 
@@ -161,9 +164,6 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
 ) + DEV_INSTALLED_APPS
 
-# append directory for the apps
-sys.path.insert(0, os.path.join(PROJECT_PATH, ''))
-sys.path.insert(1, os.path.join(PROJECT_PATH, 'apps'))
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
