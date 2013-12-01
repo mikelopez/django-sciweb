@@ -5,3 +5,4 @@ static/domains*
 *local_settings.py
 *.swp*
 *.sqlite3*
+scripts/*
