@@ -4750,6 +4750,16 @@ a.badge:hover {
 .badge-inverse[href] {
   background-color: #232628;
 }
+
+.label-danger {
+      background-color: #ee5f5b;
+  }
+
+  .label-danger[href]:hover,
+  .label-danger[href]:focus {
+        background-color: #e9322d;
+    }
+
 .btn .label,
 .btn .badge {
   position: relative;
