@@ -3,7 +3,7 @@ import sys, os
 
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
-
+ENABLE_ADMIN = False
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
 )

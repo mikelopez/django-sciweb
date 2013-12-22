@@ -16,9 +16,6 @@ urlpatterns = patterns('',
     (r'accounts/login/$', login),
     (r'login/$', login),
 
-    # app urls
-    (r'mainweb/', include('mainweb.urls')),
-    (r'xxxgalleries/', include('xxxgalleries.urls')),
 
     # defaults
     url(r'^robots.txt', 'mainweb.views.robots', name="mainweb_robots"),
@@ -26,12 +23,10 @@ urlpatterns = patterns('',
     (r'^(?P<linkname>[-\w]+)/(?P<filtername>[\w -]+)', 'mainweb.views.index'),
     (r'^(?P<linkname>[-\w]+)','mainweb.views.index'),
 )
+if ENABLE_ADMIN:
+    urlpatterns += patterns('', 
+    # app urls
+        (r'mainweb/', include('mainweb.urls')),
+        (r'xxxgalleries/', include('xxxgalleries.urls')),)
 
-# add any other custom urls from local_settings
-try:
-    from settings import application_url_includes as appurls
-    urlpatterns += appurls
-
-except ImportError:
-    pass
 
