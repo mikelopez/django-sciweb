@@ -76,6 +76,9 @@ SECRET_KEY = 'd@vj2zhb1)i29&amp;+l+!^!lnema%5^kao7m5(hvv#7@fx35j3#!7'
 BOOTSTRAP_DIR = '%sbootstrap' % MEDIA_URL
 TEMPLATE_PATH = '~/htmls'
 
+MODULES = (('http://site/', 'Adult Content'),
+           ('http://site/', 'Mainweb'),
+           ('http://site/', 'Adult Mainweb'),)
 
 try:
     from local_settings import *
