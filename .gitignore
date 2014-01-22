@@ -6,3 +6,4 @@ static/domains*
 *.swp*
 *.sqlite3*
 scripts/*
+*.wsgi*
