@@ -80,6 +80,8 @@ MODULES = (('http://site/', 'Adult Content'),
            ('http://site/', 'Mainweb'),
            ('http://site/', 'Adult Mainweb'),)
 
+WEB_STAFF_URL = "web_staff_url"
+GALLERY_STAFF_URL = "galleries_staff_url"
 try:
     from local_settings import *
 except ImportError:

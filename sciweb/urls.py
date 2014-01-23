@@ -1,9 +1,4 @@
-try:
-    # <= 1.5
-    from django.conf.urls.defaults import *
-except:
-    # >= 1.6
-    from django.conf.urls import *
+from django.conf.urls import *
 # Uncomment the next two lines to enable the admin:
 from django.conf import settings
 from django.contrib.auth.views import login, logout
@@ -12,6 +7,8 @@ admin.autodiscover()
 
 PR = getattr(settings, "PROJECT_ROOTDIR", None)
 TP = getattr(settings, "TEMPLATE_PATH", None)
+WEB_STAFF_URL = getattr(settings, "WEB_STAFF_URL")
+GALLERY_STAFF_URL = getattr(settings, "GALLERY_STAFF_URL")
 ENABLE_ADMIN = getattr(settings, "ENABLE_ADMIN", None)
 
 urlpatterns = patterns('',
@@ -41,8 +38,8 @@ if ENABLE_ADMIN:
         (r'login/$', login),
 
         # app urls
-        (r'mainweb/', include('mainweb.urls')),
-        (r'xxxgalleries/', include('xxxgalleries.urls')),
+        (r'%s/'%WEB_STAFF_URL, include('mainweb.urls')),
+        (r'%s/'%GALLERY_STAFF_URL, include('xxxgalleries.urls')),
 
         # defaults
         url(r'^robots.txt', 'mainweb.views.robots', name="mainweb_robots"),

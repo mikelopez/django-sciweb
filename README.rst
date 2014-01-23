@@ -32,7 +32,6 @@ local_settings.py
 
 .. code-block:: python
  
-    from django.conf.urls.defaults import *
     # Uncomment the next two lines to enable the admin:
 
     ENABLE_ADMIN = True
